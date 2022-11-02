@@ -1,9 +1,9 @@
-import { IChildren } from "../../interfaces/children";
-import { FormStyled, FormTop, ImgLogo } from "./styles";
-import logo from "../../../assets/logoForm.svg";
+import { IChildren } from "../../interfaces/children"
+import { FormStyled, FormTop, ImgLogo } from "./styles"
+import logo from "../../../assets/logoForm.svg"
 
 interface IForm extends IChildren {
-  title: string;
+  title: string
   maxWidth: number
 }
 
@@ -18,5 +18,5 @@ export const FormStructure = ({ title, maxWidth, children }: IForm) => {
       </FormTop>
       {children}
     </FormStyled>
-  );
-};
+  )
+}

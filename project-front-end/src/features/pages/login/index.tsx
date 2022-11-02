@@ -1,40 +1,64 @@
-import { Input } from "../../../components/inputs/index";
-import { Button } from "./../../../components/buttons/index";
-import { FormStructure } from "../../layouts/form";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { FormSchemaLogin } from "../../validations/Auth";
+import { HTMLInputTypeAttribute, useState } from "react"
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+import { Input } from "../../../components/inputs/index"
+import { Button } from "./../../../components/buttons/index"
+import { FormStructure } from "../../layouts/form"
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { FormSchemaLogin } from "../../validations/Auth"
+import { StatePassword, StateTypePassword } from "../register"
+import { CampPassword } from './../register/styles';
 import * as S from './styles'
+import { IDataUser, IRegister } from "../../interfaces/auth"
+import { api } from "../../services/axios"
+import { UseUserContext } from "../../../context/UserContext"
 
 export const Login = () => {
+  const [typeInput, setTypeInput] = useState<HTMLInputTypeAttribute>("password")
+  const [passwordIconStatus, setPasswordIconStatus] = useState<StatePassword>(false)
+
+  const { loginUser } = UseUserContext()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IRegister>({
     resolver: yupResolver(FormSchemaLogin),
   })
+
+  const toogleIconPassword = (type: StateTypePassword) => {
+    setPasswordIconStatus((value) => !value)
+    typeInput === "password" ? setTypeInput("text") : setTypeInput("password")
+  }
 
   return (
     <S.LoginStyled>
       <FormStructure title={"Faça seu Login"} maxWidth={450}>
-        <S.FormLogin>
-          <Input
-            name={"name"}
-            label={"Nome"}
-            type="text"
-            placeholder="Insira seu nome de usuario aqui"
-            register={register}
-            error={errors.name}
-          />
+        <S.FormLogin onSubmit={handleSubmit(loginUser)}>
           <Input
             name={"email"}
             label={"Email"}
-            type="email"
+            type="text"
             placeholder="Insira seu email aqui"
             register={register}
             error={errors.email}
           />
+          <CampPassword>
+            <Input
+              name={"password"}
+              label={"Senha"}
+              type={typeInput}
+              placeholder="Insira sua senha aqui"
+              register={register}
+              error={errors.password}
+            />
+            {passwordIconStatus ? (
+              <AiOutlineEye onClick={() => toogleIconPassword("text")} />
+            ) : (
+              <AiOutlineEyeInvisible onClick={() => toogleIconPassword("password")} />
+            )}
+          </CampPassword>
           <Button type="submit" variant="primary">Entrar</Button>
         </S.FormLogin>
         <S.CampRedirectRegister>
@@ -43,4 +67,4 @@ export const Login = () => {
       </FormStructure>
     </S.LoginStyled>
   )
-};
+}

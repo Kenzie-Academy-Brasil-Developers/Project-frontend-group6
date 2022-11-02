@@ -29,7 +29,7 @@ export const CampPassword = styled.div`
     svg {
         position: absolute;
         right: 16px;
-        top: 45px;
+        top: 47px;
     }
 `
 
@@ -42,7 +42,7 @@ export const CampConfirmPassword = styled.div`
     svg {
         position: absolute;
         right: 16px;
-        top: 45px;
+        top: 47px;
     }
 `
 
@@ -100,7 +100,13 @@ export const CampContractor = styled.div`
     width: inherit;
     height: 60px;
     border-radius: 8px;
-    background-color: #D2CDCD;
+    color: var(--black-color);
+    background-color: var(--grey2-color);
+
+    &:hover {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+    }
 `
 
 export const CampCollaborator = styled.div`
@@ -111,7 +117,13 @@ export const CampCollaborator = styled.div`
     gap: 2rem;
     height: 60px;
     border-radius: 8px;
-    background-color: #341099;
+    color: var(--black-color);
+    background-color: var(--grey2-color);
+
+    &:hover {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+    }
 `
 
 export const CampRedirectLogin = styled.div`

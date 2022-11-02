@@ -1,13 +1,15 @@
 import { BrowserRouter as Router } from "react-router-dom";
+import { UserProvider } from "./context/UserContext";
 import { RoutesMain } from "./features/routes";
-
 import { GlobalStyle } from "./features/styles/globalStyles";
 
 function App() {
   return (
     <>
       <Router>
-        <RoutesMain />
+        <UserProvider>
+          <RoutesMain />
+        </UserProvider>
         <GlobalStyle />
       </Router>
     </>

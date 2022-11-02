@@ -1,5 +1,5 @@
 import * as S from "./styles"
-import { HTMLInputTypeAttribute, SetStateAction, useState } from "react"
+import { HTMLInputTypeAttribute, useState } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { Input } from "../../../components/inputs/index"
 import { Button } from "./../../../components/buttons/index"
@@ -7,32 +7,30 @@ import { FormStructure } from "../../layouts/form/index"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { FormSchemaRegister } from "../../validations/Auth"
 import { useForm } from "react-hook-form"
+import { api } from "../../services/axios"
+import { IRegister } from "../../interfaces/auth"
+import { UseUserContext } from "../../../context/UserContext"
 
-type StatePassword = boolean
-type StateTypePassword = "password" | "text"
+export type StatePassword = boolean
+export type StateTypePassword = "password" | "text"
 
 export const Register = () => {
   const [typeInput, setTypeInput] = useState<HTMLInputTypeAttribute>("password")
   const [passwordIconStatus, setPasswordIconStatus] = useState<StatePassword>(false)
+
+  const { submitRegister } = UseUserContext()
   
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<IRegister>({
     resolver: yupResolver(FormSchemaRegister),
   })
 
   const toogleIconPassword = (type: StateTypePassword) => {
     setPasswordIconStatus((value) => !value)
     typeInput === "password" ? setTypeInput("text") : setTypeInput("password")
-  }
-
-  const submitRegister = (data: {}) => {
-    const obj = {
-      avatar_img: "https://cdn-icons-png.flaticon.com/512/219/219969.png"
-    }
-    console.log(data)
   }
 
   return (
@@ -72,7 +70,7 @@ export const Register = () => {
           </S.CampPassword>
           <S.CampConfirmPassword>
             <Input
-              name={"confirm_password"}
+              name="confirm_password"
               label={"Confirmar senha"}
               type={typeInput}
               placeholder="Insira sua senha novamente"

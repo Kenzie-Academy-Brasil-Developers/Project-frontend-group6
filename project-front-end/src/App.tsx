@@ -1,9 +1,17 @@
-import { LandingPage } from "./features/pages/landingPage";
+import { BrowserRouter as Router } from "react-router-dom";
+import { RoutesMain } from "./features/routes";
+
+import { GlobalStyle } from "./features/styles/globalStyles";
 
 function App() {
-  return <div className="App">
-    <LandingPage />
-  </div>;
+  return (
+    <>
+      <Router>
+        <RoutesMain />
+        <GlobalStyle />
+      </Router>
+    </>
+  );
 }
 
 export default App;

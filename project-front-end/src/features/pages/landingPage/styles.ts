@@ -27,6 +27,7 @@ export const LogoStyled = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   width: 40rem;
+  max-width: 100%;
   height: 300px;
 
   @media (max-width: 426px) {
@@ -39,6 +40,7 @@ export const DivInfos = styled.div`
   flex-direction: column;
   gap: 1rem;
   width: 35rem;
+  max-width: 100%;
   align-items: center;
   text-align: center;
 

@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
-export const FormStyled = styled.div`
+interface IFormStyled {
+  maxWidth: number
+}
+
+export const FormStyled = styled.div<IFormStyled>`
   border-radius: 4px;
   width: 100%;
-  padding: 1rem 3rem;
-  max-width: 600px;
+  padding: 1rem;
+  max-width: ${({ maxWidth }) => maxWidth}px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   background-color: #f8f7f4;
 `;
@@ -19,7 +24,7 @@ export const FormTop = styled.div`
   align-items: center;
 
   h2 {
-    font-size: 25px;
+    font-size: 35px;
     color: #341099;
   }
 `;

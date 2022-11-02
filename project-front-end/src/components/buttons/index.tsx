@@ -6,7 +6,7 @@ interface IButton {
   variant?: "primary" | "secondary" | "terciary" | "quaternary";
   children: ReactNode;
 
-  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
 export const Button = ({ type, variant, children, onClick }: IButton) => {

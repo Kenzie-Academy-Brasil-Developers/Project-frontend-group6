@@ -14,8 +14,9 @@ const typeButton = {
     border: 2px solid transparent;
 
     :hover {
-      background-color: transparent;
       transition: 0.5s;
+
+      background-color: transparent;
       border: 2px solid var(--primary-color);
       color: var(--primary-color);
     }
@@ -30,31 +31,45 @@ const typeButton = {
     color: var(--primary-color);
 
     :hover {
+      transition: 0.5s;
+
+      background-color: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
     }
   `,
 
   terciary: css`
-    width: 40%;
+    width: 140px;
     height: 48px;
-    font-size: 24px;
+    font-size: 14px;
 
     background-color: var(--primary-color);
     color: var(--white-color);
 
     :hover {
-      background-color: var(--secondary-color);
       transition: 0.5s;
+
+      background-color: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
     }
   `,
 
   quaternary: css`
-    width: 50px;
+    width: 140px;
     height: 48px;
     font-size: 16px;
 
     background-color: var(--white-color);
     color: var(--primary-color);
+
     :hover {
+      transition: 0.5s;
+
+      background-color: transparent;
+      border: 2px solid var(--white-color);
+      color: var(--white-color);
     }
   `,
 };

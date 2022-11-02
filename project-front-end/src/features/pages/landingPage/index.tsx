@@ -1,19 +1,44 @@
-import { BgStyled, DivInfos, LogoStyled, PLandingStyled, TitleLandingStyled, DivButtonsLandingStyled, ButtonLandingStyled } from './styles';
+import * as S from "./styles";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../../../components/buttons";
 
 export const LandingPage = () => {
-  return (
-    <BgStyled>
-      <LogoStyled />
-      <DivInfos>
-        <TitleLandingStyled>Você está precisando realizar serviços de manutenção em casa?</TitleLandingStyled>
-        <PLandingStyled>Entre já no nosso site e resolva todos os seus problemas! </PLandingStyled>
-        <DivButtonsLandingStyled>
-          <ButtonLandingStyled>Quero conhecer</ButtonLandingStyled>
-          <ButtonLandingStyled>Fazer login</ButtonLandingStyled>
-        </DivButtonsLandingStyled>
-      </DivInfos>
-    </BgStyled>
-  )
-    
+  const navigate = useNavigate();
 
+  return (
+    <S.BgStyled>
+      <S.LogoStyled />
+      <S.DivInfos>
+        <S.TitleLandingStyled>
+          Você está precisando realizar serviços de manutenção em casa?
+        </S.TitleLandingStyled>
+
+        <S.PLandingStyled>
+          Entre já no nosso site e resolva todos os seus problemas!
+        </S.PLandingStyled>
+
+        <S.DivButtonsLandingStyled>
+          <Button
+            onClick={() => {
+              navigate("/home");
+            }}
+            variant="quaternary"
+            type="button"
+          >
+            Quero conhecer
+          </Button>
+
+          <Button
+            onClick={() => {
+              navigate("/login");
+            }}
+            variant="quaternary"
+            type="button"
+          >
+            Fazer login
+          </Button>
+        </S.DivButtonsLandingStyled>
+      </S.DivInfos>
+    </S.BgStyled>
+  );
 };

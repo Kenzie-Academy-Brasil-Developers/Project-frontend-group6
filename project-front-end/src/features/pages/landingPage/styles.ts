@@ -1,9 +1,10 @@
 import styled from "styled-components";
-// import bg from '../../../../src/assets/';
+import bg from "/src/assets/bgLandingPage.png";
+import bgMobile from "/src/assets/bgLandingPageMobile.png";
+import logoWhite from "/src/assets/logowhite.png";
 
 export const BgStyled = styled.div`
-  background-image: linear-gradient(#2d00ac71, #2d00ac71, #2d00ac71),
-    url("../../../../src/assets/bgLandingPage.png");
+  background-image: linear-gradient(#2d00ac71, #2d00ac71, #2d00ac71), url(${bg});
   background-size: cover;
   min-height: 100vh;
   max-width: 100%;
@@ -16,14 +17,14 @@ export const BgStyled = styled.div`
 
   @media (max-width: 600px) {
     background-image: linear-gradient(#2d00ac71, #2d00ac71, #2d00ac71),
-      url("../../../../src/assets/bgLandingPageMobile.png");
+      url(${bgMobile});
     flex-direction: column;
     justify-content: space-evenly;
   }
 `;
 
 export const LogoStyled = styled.div`
-  background-image: url("../../../../src/assets/logowhite.png");
+  background-image: url(${logoWhite});
   background-size: contain;
   background-repeat: no-repeat;
   width: 40rem;

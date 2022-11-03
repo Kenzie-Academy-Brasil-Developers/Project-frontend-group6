@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface IFormStyled {
-  maxWidth: number
+  maxWidth: number;
 }
 
 export const FormStyled = styled.div<IFormStyled>`
@@ -25,7 +25,7 @@ export const FormTop = styled.div`
 
   h2 {
     font-size: 35px;
-    color: #341099;
+    color: var(--primary-color);
   }
 `;
 
@@ -46,6 +46,6 @@ export const ImgLogo = styled.div`
 
   h2 {
     font-size: 25px;
-    color: #341099;
+    color: var(--primary-color);
   }
 `;

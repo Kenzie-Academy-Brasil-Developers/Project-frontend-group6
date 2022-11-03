@@ -1,22 +1,23 @@
-import StyledHeader from "./styles";
+import { StyledHeader, GoToRegister, Container } from "./styles";
 import { motion } from "framer-motion";
+import logo from "/src/assets/logowhite.png";
 import { useState } from "react";
+import { IChildren } from "../../interfaces/children";
 
-export const Header = () => {
+export const Header = ({ children }: IChildren) => {
   const [isOn, setIsOn] = useState(false);
   const toggleSwitch = () => setIsOn(!isOn);
   return (
     <StyledHeader>
-      <div className="container">
-        <img src="../../../../src/assets/logoForm.svg" alt="Logo" />
-        <div className="goToRegister">
+      <Container>
+        <img src={logo} alt="Logo" />
+        <GoToRegister>
           <div className="switch" data-isOn={isOn} onClick={toggleSwitch}>
             <motion.div className="handle" layout transition={spring} />
           </div>
-
-          <button>Cadastrar</button>
-        </div>
-      </div>
+          {children}
+        </GoToRegister>
+      </Container>
     </StyledHeader>
   );
 };

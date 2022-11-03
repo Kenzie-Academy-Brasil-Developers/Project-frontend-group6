@@ -22,7 +22,7 @@ const StyledHome = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.2rem;
+      gap: 1.4rem;
       figure {
         border-radius: 50%;
         overflow: hidden;
@@ -33,20 +33,11 @@ const StyledHome = styled.div`
       }
       p {
         text-align: center;
-      }
-      /* button {
-        padding: 0.4rem 1rem;
-        font-weight: bold;
-        background-color: var(--primary-color);
-        color: var(--white-color);
-        border-radius: 4px;
-        :hover {
-          transition: 0.5s;
-          background-color: transparent;
-          border: 2px solid var(--primary-color);
-          color: var(--primary-color);
-        }
-      } */
+        max-width: 14rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }      
     }
   }
 

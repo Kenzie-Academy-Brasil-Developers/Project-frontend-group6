@@ -2,8 +2,11 @@ import StyledHome from "./styles";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/buttons";
 import { Header } from "../../layouts/header";
+import { useState } from "react";
+import { ModalHome } from "../../layouts/ModalHome";
 
 export const HomePage = () => {
+  const [isModal, setIsModal] = useState(false);
   return (
     <>
       <Header>
@@ -17,8 +20,13 @@ export const HomePage = () => {
               <img src="/src/assets/woman.png" alt="woman" />
             </figure>
             <h2>Maria</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <Button type="button" variant="terciary">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit placeat
+              quas unde neque voluptate deleniti. quidem qui quaerat corrupti
+              optio, quisquam dolores, hic minus expedita accusantium, labore
+              voluptatibus nisi eos esse!.
+            </p>
+            <Button type="button" variant="terciary" onClick={()=> setIsModal(!isModal)}>
               Abrir
             </Button>
           </li>
@@ -94,6 +102,8 @@ export const HomePage = () => {
           </li>
         </ul>
       </StyledHome>
+
+      {isModal && <ModalHome isModal = {isModal} setIsModal = {setIsModal} />}
     </>
   );
 };

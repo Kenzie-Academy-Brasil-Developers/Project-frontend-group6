@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { HireProfile } from "../layouts/HireProfile";
 import { HomePage } from "../pages/homePage";
 import { LandingPage } from "../pages/landingPage";
 import { Login } from "../pages/login";
@@ -11,7 +12,7 @@ export const RoutesMain = () => {
     <>
       <Routes>
         <Route />
-        <Route />
+        <Route path="/profile" element={<HireProfile/>}/>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<HomePage />} />

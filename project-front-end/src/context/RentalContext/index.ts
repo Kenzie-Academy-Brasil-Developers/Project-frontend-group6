@@ -8,6 +8,4 @@ export const RentalContext = createContext<IRentalContext>(
 
 export const RentalProvider = () => {};
 
-export const UseRentalContext = () => {
-  return useContext(RentalContext);
-};
+export const UseRentalContext = () => useContext(RentalContext);

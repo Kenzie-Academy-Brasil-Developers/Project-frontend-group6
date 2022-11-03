@@ -1,22 +1,22 @@
-import { IChildren } from "../../interfaces/children"
-import { FormStyled, FormTop, ImgLogo } from "./styles"
-import logo from "../../../assets/logoForm.svg"
+import { IChildren } from "../../interfaces/children";
+import * as S from "./styles";
+import logo from "/src/assets/logoForm.svg";
 
 interface IForm extends IChildren {
-  title: string
-  maxWidth: number
+  title: string;
+  maxWidth: number;
 }
 
 export const FormStructure = ({ title, maxWidth, children }: IForm) => {
   return (
-    <FormStyled maxWidth={maxWidth}>
-      <FormTop>
-        <ImgLogo>
+    <S.FormStyled maxWidth={maxWidth}>
+      <S.FormTop>
+        <S.ImgLogo>
           <img src={logo} alt="logo" />
-        </ImgLogo>
+        </S.ImgLogo>
         <h2>{title}</h2>
-      </FormTop>
+      </S.FormTop>
       {children}
-    </FormStyled>
-  )
-}
+    </S.FormStyled>
+  );
+};

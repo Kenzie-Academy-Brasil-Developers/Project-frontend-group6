@@ -5,10 +5,10 @@ export const FormSchemaRegister = yup.object({
   email: yup.string().email().required("Email obrigatório"),
   password: yup
     .string()
-    .min(8)
+    .min(8, "Senha com no mínimo 8 caracteres.")
     .matches(
       /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/,
-      "Senha com no mínimo 8 caracteres. Necessário ter letras, números e ao menos um símbolo"
+      "Necessário ter letras, números e ao menos um símbolo"
     )
     .required("Senha obrigatória"),
   confirm_password: yup
@@ -23,10 +23,10 @@ export const FormSchemaLogin = yup.object({
   email: yup.string().email().required("Email obrigatório"),
   password: yup
     .string()
-    .min(8)
+    .min(8, "Senha com no mínimo 8 caracteres.")
     .matches(
       /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/,
-      "Senha com no mínimo 8 caracteres. Necessário ter letras, números e ao menos um símbolo"
+      "Necessário ter letras, números e ao menos um símbolo"
     )
-    .required("Senha obrigatória")
-})
+    .required("Senha obrigatória"),
+});

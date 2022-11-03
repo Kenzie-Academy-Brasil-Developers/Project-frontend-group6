@@ -6,22 +6,10 @@ import {
 } from "@mui/material";
 import { Button } from "../../../components/buttons";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { CProfileStyled } from "./style";
+import * as S from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-
-const schema = yup.object({
-  name: yup.string().required("O campo de nome é obrigatório"),
-  email: yup
-    .string()
-    .email("Insira um email válido")
-    .required("O campo de email é obrigatório"),
-  contact: yup.string().required("O campo de contato é obrigatório"),
-  gender: yup.string().required("O campo de gênero é obrigatório"),
-  location: yup.string().required("O campo de localidade é obrigatório"),
-  avatar_img: yup.string().required("O campo de URL da imagem é obrigatório"),
-});
+import { CProfileSchema } from "../../validations/Other Validations";
 
 interface ICProfile {
   name: string;
@@ -40,14 +28,14 @@ export const CProfile = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICProfile>({ resolver: yupResolver(schema) });
+  } = useForm<ICProfile>({ resolver: yupResolver(CProfileSchema) });
 
   const onSubmit = (data: ICProfile) => {
     console.log(data);
   };
 
   return (
-    <CProfileStyled>
+    <S.CProfileStyled>
       <div>
         <img
           src="https://cdn-icons-png.flaticon.com/512/219/219969.png"
@@ -162,6 +150,6 @@ export const CProfile = () => {
           Salvar
         </Button>
       </form>
-    </CProfileStyled>
+    </S.CProfileStyled>
   );
 };

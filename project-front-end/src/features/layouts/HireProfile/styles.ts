@@ -13,10 +13,20 @@ export const EditProfile = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
-   padding: 45px;
+   padding: 90px 45px;
    position: relative;
 
    /* terciary */
+
+   h3{
+      font-size: 16px;
+      color: var(--primary-color);
+   }
+
+   p{
+      color: var(--primary-color);
+      font-size: 12px;
+   }
 
    > form {
 
@@ -32,6 +42,7 @@ export const EditProfile = styled.div`
          display: flex;
          flex-direction: column;
          padding-bottom: 50px;
+         gap: 1rem;
          
       }
 

@@ -25,3 +25,8 @@ export const HireProfileSchema = yup.object({
   description : yup.string().required("O campo de descrição é obrigatório"),
   avatar_img: yup.string().required("O campo de URL da imagem é obrigatório"),
 });
+
+export const ModalProfileHireSchema = yup.object({
+  title: yup.string().required("O campo de nome é obrigatório"),
+  description: yup.string().required("O campo de descrição é obrigatório"),
+});

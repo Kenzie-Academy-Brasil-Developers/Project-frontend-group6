@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { UserProvider } from "../../context/UserContext";
+import { ContractHireP } from "../layouts/ContractHireP";
 import { Dashboard } from "../pages/dashboard";
 import { HomePage } from "../pages/homePage";
 import { LandingPage } from "../pages/landingPage";

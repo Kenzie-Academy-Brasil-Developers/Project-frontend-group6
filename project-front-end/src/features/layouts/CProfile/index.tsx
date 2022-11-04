@@ -22,7 +22,7 @@ interface ICProfile {
 }
 
 export const CProfile = () => {
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState<string[]>([]);
 
   const {
     register,
@@ -31,9 +31,15 @@ export const CProfile = () => {
   } = useForm<ICProfile>({ resolver: yupResolver(CProfileSchema) });
 
   const onSubmit = (data: ICProfile) => {
+    data.services = services;
     console.log(data);
   };
 
+  const limpaCheck = (remove: string) => {
+    const filtro = services.filter((elem) => elem != remove);
+
+    setServices(filtro);
+  };
   return (
     <S.CProfileStyled>
       <div>
@@ -50,7 +56,7 @@ export const CProfile = () => {
             variant="standard"
             color="secondary"
             sx={{
-              width: 300,
+              width: 260,
             }}
             {...register("name")}
           />
@@ -61,7 +67,7 @@ export const CProfile = () => {
             variant="standard"
             color="secondary"
             sx={{
-              width: 300,
+              width: 260,
             }}
             {...register("email")}
           />
@@ -72,7 +78,7 @@ export const CProfile = () => {
             variant="standard"
             color="secondary"
             sx={{
-              width: 300,
+              width: 260,
             }}
             {...register("contact")}
           />
@@ -83,7 +89,7 @@ export const CProfile = () => {
             variant="standard"
             color="secondary"
             sx={{
-              width: 300,
+              width: 260,
             }}
             {...register("gender")}
           />
@@ -94,7 +100,7 @@ export const CProfile = () => {
             variant="standard"
             color="secondary"
             sx={{
-              width: 300,
+              width: 260,
             }}
             {...register("location")}
           />
@@ -106,29 +112,83 @@ export const CProfile = () => {
             <FormGroup className="checkSec">
               <div className="checkLocale">
                 <FormControlLabel
-                  control={<Checkbox color="secondary" />}
+                  control={
+                    <Checkbox
+                      color="secondary"
+                      onChange={(e) =>
+                        e.target.checked
+                          ? setServices([...services, "Alvenaria"])
+                          : limpaCheck("Alvenaria")
+                      }
+                    />
+                  }
                   label="Alvenaria"
                 />
                 <FormControlLabel
-                  control={<Checkbox color="secondary" />}
+                  control={
+                    <Checkbox
+                      color="secondary"
+                      onChange={(e) =>
+                        e.target.checked
+                          ? setServices([...services, "Marcenaria"])
+                          : limpaCheck("Marcenaria")
+                      }
+                    />
+                  }
                   label="Marcenaria"
                 />
                 <FormControlLabel
-                  control={<Checkbox color="secondary" />}
+                  control={
+                    <Checkbox
+                      color="secondary"
+                      onChange={(e) =>
+                        e.target.checked
+                          ? setServices([...services, "Eletricista"])
+                          : limpaCheck("Eletricista")
+                      }
+                    />
+                  }
                   label="Eletricista"
                 />
               </div>
               <div className="checkLocale">
                 <FormControlLabel
-                  control={<Checkbox color="secondary" />}
-                  label="Hidraulico"
+                  control={
+                    <Checkbox
+                      color="secondary"
+                      onChange={(e) =>
+                        e.target.checked
+                          ? setServices([...services, "Hidraulica"])
+                          : limpaCheck("Hidraulica")
+                      }
+                    />
+                  }
+                  label="Hidraulica"
                 />
                 <FormControlLabel
-                  control={<Checkbox color="secondary" />}
-                  label="Mecanico"
+                  control={
+                    <Checkbox
+                      color="secondary"
+                      onChange={(e) =>
+                        e.target.checked
+                          ? setServices([...services, "Mecanica"])
+                          : limpaCheck("Mecanica")
+                      }
+                    />
+                  }
+                  label="Mecanica"
                 />
                 <FormControlLabel
-                  control={<Checkbox color="secondary" />}
+                  control={
+                    <Checkbox
+                      color="secondary"
+                      onChange={(e) =>
+                        e.target.checked
+                          ? setServices([...services, "Diarista"])
+                          : limpaCheck("Diarista")
+                      }
+                    />
+                  }
                   label="Diarista"
                 />
               </div>
@@ -140,7 +200,7 @@ export const CProfile = () => {
             variant="standard"
             color="secondary"
             sx={{
-              width: 300,
+              width: 260,
             }}
             {...register("avatar_img")}
           />

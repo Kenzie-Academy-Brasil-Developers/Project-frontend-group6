@@ -1,3 +1,4 @@
+import * as S from './styles'
 import { HTMLInputTypeAttribute, useState } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { Input } from "../../../components/inputs/index"
@@ -8,9 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { FormSchemaLogin } from "../../validations/Auth"
 import { StatePassword, StateTypePassword } from "../register"
 import { CampPassword } from './../register/styles';
-import * as S from './styles'
 import { IDataUser, IRegister } from "../../interfaces/auth"
-import { api } from "../../services/axios"
 import { UseUserContext } from "../../../context/UserContext"
 
 export const Login = () => {
@@ -27,7 +26,7 @@ export const Login = () => {
     resolver: yupResolver(FormSchemaLogin),
   })
 
-  const toogleIconPassword = (type: StateTypePassword) => {
+  const toogleIconPassword = () => {
     setPasswordIconStatus((value) => !value)
     typeInput === "password" ? setTypeInput("text") : setTypeInput("password")
   }
@@ -54,9 +53,9 @@ export const Login = () => {
               error={errors.password}
             />
             {passwordIconStatus ? (
-              <AiOutlineEye onClick={() => toogleIconPassword("text")} />
+              <AiOutlineEye onClick={toogleIconPassword} />
             ) : (
-              <AiOutlineEyeInvisible onClick={() => toogleIconPassword("password")} />
+              <AiOutlineEyeInvisible onClick={toogleIconPassword} />
             )}
           </CampPassword>
           <Button type="submit" variant="primary">Entrar</Button>

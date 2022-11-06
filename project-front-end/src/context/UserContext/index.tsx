@@ -60,10 +60,12 @@ export const UserProvider = ({ children }: IChildren) => {
       name: name,
       email: email,
       password: password,
-      is_hired: radioGroup === "true" ? true : false,
-    }
-    registerUser(dataUser)
-  }
+      is_hired: radioGroup === "true" ? false : true,
+      services: [],
+    };
+    registerUser(dataUser);
+  };
+
 
   return (
     <UserContext.Provider value={{ submitRegister, loginUser }}>

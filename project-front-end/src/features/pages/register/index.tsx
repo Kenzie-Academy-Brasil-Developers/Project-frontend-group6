@@ -7,7 +7,6 @@ import { FormStructure } from "../../layouts/form/index"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { FormSchemaRegister } from "../../validations/Auth"
 import { useForm } from "react-hook-form"
-import { api } from "../../services/axios"
 import { IRegister } from "../../interfaces/auth"
 import { UseUserContext } from "../../../context/UserContext"
 
@@ -28,7 +27,7 @@ export const Register = () => {
     resolver: yupResolver(FormSchemaRegister),
   })
 
-  const toogleIconPassword = (type: StateTypePassword) => {
+  const toogleIconPassword = () => {
     setPasswordIconStatus((value) => !value)
     typeInput === "password" ? setTypeInput("text") : setTypeInput("password")
   }
@@ -63,24 +62,24 @@ export const Register = () => {
               error={errors.password}
             />
             {passwordIconStatus ? (
-              <AiOutlineEye onClick={() => toogleIconPassword("text")} />
+              <AiOutlineEye onClick={toogleIconPassword} />
             ) : (
-              <AiOutlineEyeInvisible onClick={() => toogleIconPassword("password")} />
+              <AiOutlineEyeInvisible onClick={toogleIconPassword} />
             )}
           </S.CampPassword>
           <S.CampConfirmPassword>
             <Input
-              name="confirm_password"
+              name={"confirm_password"}
               label={"Confirmar senha"}
               type={typeInput}
               placeholder="Insira sua senha novamente"
               register={register}
-              error={errors.password}
+              error={errors.confirm_password}
             />
             {passwordIconStatus ? (
-              <AiOutlineEye onClick={() => toogleIconPassword("text")} />
+              <AiOutlineEye onClick={toogleIconPassword} />
             ) : (
-              <AiOutlineEyeInvisible onClick={() => toogleIconPassword("password")} />
+              <AiOutlineEyeInvisible onClick={toogleIconPassword} />
             )}
           </S.CampConfirmPassword>
           <S.CampTypeUser>
@@ -95,6 +94,7 @@ export const Register = () => {
                 <span>Colaboradora</span>
               </S.CampCollaborator>
             </S.CampChoiceJob>
+            {!!errors.radioGroup && <span>Marque uma opção</span>}
           </S.CampTypeUser>
           <Button type="submit" variant="primary">
             Cadastrar

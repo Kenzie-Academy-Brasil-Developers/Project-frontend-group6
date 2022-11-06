@@ -57,7 +57,8 @@ export const UserProvider = ({ children }: IChildren) => {
       name: name,
       email: email,
       password: password,
-      is_hired: radioGroup === "true" ? true : false,
+      is_hired: radioGroup === "true" ? false : true,
+      services: [],
     };
     registerUser(dataUser);
   };

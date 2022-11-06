@@ -11,7 +11,7 @@ export const Header = ({ children }: IChildren) => {
   return (
     <S.StyledHeader>
       <S.Container>
-        <Link to="/">
+        <Link to="/dashboard">
           <img src={logo} alt="Logo" />
         </Link>
         <S.GoToRegister>

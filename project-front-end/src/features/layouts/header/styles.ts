@@ -12,6 +12,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  animation: fadeInDown 1.5s;
   img {
     width: 8rem;
   }

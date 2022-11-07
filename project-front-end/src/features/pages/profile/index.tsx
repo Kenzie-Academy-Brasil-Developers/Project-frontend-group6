@@ -1,9 +1,9 @@
 import { CProfile } from "../../layouts/CProfile";
 import { HireProfile } from "../../layouts/HireProfile";
-import { Header } from "../../layouts/header";
+import { Header } from "../../layouts/Header";
 import { Avatar } from "@mui/material";
 import { Container } from "../../styles/container";
-import { H2Styled } from "./styles";
+import * as S from "./styles";
 import { UserContext } from "../../../context/UserContext";
 import { useEffect, useState } from "react";
 import { api } from "../../services/axios";
@@ -37,7 +37,7 @@ export const Profile = () => {
           <Avatar src={user.avatar_img} />
         </Header>
         <Container>
-          <H2Styled>Editar Perfil</H2Styled>
+          <S.H2Styled>Editar Perfil</S.H2Styled>
           {user.is_hired ? (
             <HireProfile user={user} />
           ) : (

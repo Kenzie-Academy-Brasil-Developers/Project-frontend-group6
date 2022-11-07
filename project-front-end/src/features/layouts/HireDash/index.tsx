@@ -1,7 +1,7 @@
+import * as S from "./styles";
 import { useEffect, useState } from "react";
 import { Loading } from "../../../components/Loading";
 import { api } from "../../services/axios";
-import { DashStyled, FProposalStyled, ProposalStyled } from "./style";
 
 export const HireDash = () => {
   const [proposals, setProposals] = useState<any>([]);
@@ -37,8 +37,8 @@ export const HireDash = () => {
     return <Loading />;
   } else {
     return (
-      <DashStyled>
-        <ProposalStyled>
+      <S.DashStyled>
+        <S.ProposalStyled>
           <h2>Propostas</h2>
           <ul>
             {filterProposals("Enviado").length !== 0 ? (
@@ -58,8 +58,8 @@ export const HireDash = () => {
               <h2>Texto</h2>
             )}
           </ul>
-        </ProposalStyled>
-        <FProposalStyled>
+        </S.ProposalStyled>
+        <S.FProposalStyled>
           <h2>Trabalhos finalizados</h2>
           <ul>
             {filterProposals("Enviado").length !== 0 ? (
@@ -80,8 +80,8 @@ export const HireDash = () => {
               <h2>Texto</h2>
             )}
           </ul>
-        </FProposalStyled>
-      </DashStyled>
+        </S.FProposalStyled>
+      </S.DashStyled>
     );
   }
 };

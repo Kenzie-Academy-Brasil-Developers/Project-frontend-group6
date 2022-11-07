@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import bg from "/src/assets/bgLandingPage.png";
 import bgMobile from "/src/assets/bgLandingPageMobile.png";
-import logoWhite from "/src/assets/logowhite.png";
+import logoWhite from "/src/assets/logoWhite.svg";
 
 export const BgStyled = styled.div`
   background-image: linear-gradient(#2d00ac71, #2d00ac71, #2d00ac71), url(${bg});

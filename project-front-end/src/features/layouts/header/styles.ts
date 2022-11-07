@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import dark from "/src/assets/dark.png";
+import darkMode from "/src/assets/darkMode.png";
 
 export const StyledHeader = styled.header`
   background-color: var(--primary-color);
@@ -41,7 +41,7 @@ export const GoToRegister = styled.div`
   .switch {
     width: 3rem;
     height: 1.5rem;
-    background: url(${dark}) rgba(255, 255, 255, 0.7) 0.2rem no-repeat;
+    background: url(${darkMode}) rgba(255, 255, 255, 0.7) 0.2rem no-repeat;
     background-size: 2.5rem;
     display: flex;
     justify-content: flex-start;

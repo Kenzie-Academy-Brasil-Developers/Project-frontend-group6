@@ -1,5 +1,5 @@
 import { IInputProps } from "../../features/interfaces/components";
-import { CampInput, LabelStyled, InputStyled } from "./styled";
+import { CampInput, LabelStyled, InputStyled } from "./styles";
 
 export const Input = ({
   name,

@@ -1,6 +1,6 @@
 import { Avatar } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Header } from "../../layouts/header";
+import { Header } from "../../layouts/Header";
 import { HireDash } from "../../layouts/HireDash";
 import { api } from "../../services/axios";
 import { Container } from "../../styles/container";

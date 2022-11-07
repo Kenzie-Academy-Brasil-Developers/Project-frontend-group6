@@ -1,7 +1,7 @@
-import StyledHome from "./styles";
+import * as S from "./styles";
 import { Link } from "react-router-dom";
-import { Button } from "../../../components/buttons";
-import { Header } from "../../layouts/header";
+import { Button } from "../../../components/Buttons";
+import { Header } from "../../layouts/Header";
 import { useState } from "react";
 import { ModalHome } from "../../layouts/ModalHome";
 
@@ -12,7 +12,7 @@ export const HomePage = () => {
       <Header>
         <Link to="/register">Cadastrar</Link>
       </Header>
-      <StyledHome>
+      <S.StyledHome>
         <h2 className="homeTitle">Encontre aqui as opções mais seguras</h2>
         <ul>
           <li>
@@ -26,7 +26,11 @@ export const HomePage = () => {
               optio, quisquam dolores, hic minus expedita accusantium, labore
               voluptatibus nisi eos esse!.
             </p>
-            <Button type="button" variant="terciary" onClick={()=> setIsModal(!isModal)}>
+            <Button
+              type="button"
+              variant="terciary"
+              onClick={() => setIsModal(!isModal)}
+            >
               Abrir
             </Button>
           </li>
@@ -101,9 +105,9 @@ export const HomePage = () => {
             </Button>
           </li>
         </ul>
-      </StyledHome>
+      </S.StyledHome>
 
-      {isModal && <ModalHome isModal = {isModal} setIsModal = {setIsModal} />}
+      {isModal && <ModalHome isModal={isModal} setIsModal={setIsModal} />}
     </>
   );
 };

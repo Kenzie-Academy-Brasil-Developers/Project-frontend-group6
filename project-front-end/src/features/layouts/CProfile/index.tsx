@@ -1,12 +1,12 @@
+import * as S from "./styles";
 import {
   Checkbox,
   FormControlLabel,
   FormGroup,
   TextField,
 } from "@mui/material";
-import { Button } from "../../../components/buttons";
+import { Button } from "../../../components/Buttons";
 import { useForm } from "react-hook-form";
-import * as S from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { CProfileSchema } from "../../validations/Other Validations";

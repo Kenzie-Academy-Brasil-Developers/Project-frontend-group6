@@ -1,4 +1,5 @@
-import "./styles.css";
+// import "./styles.css";
+import * as S from "./styles";
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { IChildren } from "../../features/interfaces/children";
@@ -25,7 +26,7 @@ export const UserDropdown = ({ children }: IChildren) => {
   };
 
   return (
-    <motion.nav
+    <NavStyled
       initial={false}
       animate={isOpen ? "open" : "closed"}
       className="menu"
@@ -91,6 +92,6 @@ export const UserDropdown = ({ children }: IChildren) => {
           <span>Editar</span>
         </motion.li>
       </motion.ul>
-    </motion.nav>
+    </NavStyled>
   );
 };

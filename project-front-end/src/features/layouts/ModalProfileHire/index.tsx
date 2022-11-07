@@ -4,21 +4,65 @@ import { useForm } from "react-hook-form";
 import { Button } from "../../../components/Buttons";
 import { ModalStyled } from "../../../components/Modal/styles";
 import { ModalProfileHireSchema } from "../../validations/Other Validations";
+import { api } from "../../services/axios";
+import axios from "axios";
+import { ErrorToast, SucessToast } from "../../libs/toastify";
 
 interface ISendPropose {
   title: string;
   description: string;
+  userId: number;
+  is_active: string;
+  user: {
+    avatar_img: string;
+    contractorName: string;
+    contact: string;
+    contractorId: number;
+  };
 }
 
-export const ModalProfileHire = ({ isModal, setIsModal }: any) => {
+export const ModalProfileHire = ({
+  isModal,
+  setIsModal,
+  contractor,
+  hired,
+}: any) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<ISendPropose>({ resolver: yupResolver(ModalProfileHireSchema) });
 
+  const getProposals = async (proposal: ISendPropose) => {
+    const token = localStorage.getItem("@rentalToken");
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+      const { data } = await api.post("proposals", proposal);
+      SucessToast("Proposta enviada com sucesso");
+      setIsModal(!isModal);
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(error);
+        ErrorToast("Não foi possível enviar sua proposta");
+      }
+    }
+  };
+
   const onSubmit = (data: ISendPropose) => {
-    console.log(data);
+    const proposal = {
+      userId: hired.id,
+      is_active: "Enviado",
+      title: data.title,
+      description: data.description,
+      user: {
+        avatar_img: contractor.avatar_img,
+        contractorName: contractor.name,
+        contact: contractor.contact,
+        contractorId: contractor.id,
+      },
+    };
+    getProposals(proposal);
   };
 
   return (

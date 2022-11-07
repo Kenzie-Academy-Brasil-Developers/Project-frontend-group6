@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { UserProvider } from "../../context/UserContext";
 import { ContractHireP } from "../layouts/ContractHireP";
+import { ContractorProposals } from "../pages/contractorProposals";
 import { Dashboard } from "../pages/dashboard";
 import { HomePage } from "../pages/homePage";
 import { LandingPage } from "../pages/landingPage";
@@ -13,7 +14,10 @@ export const RoutesMain = () => {
     <>
       <UserProvider>
         <Routes>
-          <Route path="/contractorproposals" element={<ContractorProposals />}></Route>
+          <Route
+            path="/contractorproposals"
+            element={<ContractorProposals />}
+          ></Route>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/register" element={<Register />} />

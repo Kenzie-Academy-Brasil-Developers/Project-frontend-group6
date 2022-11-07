@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { Link } from "react-router-dom";
-import { Button } from "../../../components/buttons";
+import { Button } from "../../../components/Buttons";
 import { Header } from "../../layouts/header";
 import { useEffect, useState } from "react";
 import { ModalHome } from "../../layouts/ModalHome";
@@ -15,7 +15,8 @@ interface IDataWorker {
 
 export const HomePage = () => {
   const [isModal, setIsModal] = useState(false);
-  const [workerData, setWorkerData] = useState<IDataWorker[]>([])
+  const [workerData, setWorkerData] = useState<IDataWorker[]>([]);
+
   useEffect(() => {
     async function loadWorkers() {
       try {
@@ -28,6 +29,7 @@ export const HomePage = () => {
 
     loadWorkers();
   }, []);
+
   return (
     <>
       <Header>
@@ -53,9 +55,7 @@ export const HomePage = () => {
             </li>
           ))}
         </ul>
-       
-      </StyledHome>
-
+      </S.StyledHome>
 
       {isModal && <ModalHome isModal={isModal} setIsModal={setIsModal} />}
     </>

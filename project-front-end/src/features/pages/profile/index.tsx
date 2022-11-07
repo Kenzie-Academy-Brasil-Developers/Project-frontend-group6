@@ -1,6 +1,6 @@
 import { CProfile } from "../../layouts/CProfile";
 import { HireProfile } from "../../layouts/HireProfile";
-import { Header } from "../../layouts/Header";
+import { Header } from "../../layouts/header";
 import { Avatar } from "@mui/material";
 import { Container } from "../../styles/container";
 import * as S from "./styles";
@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/axios";
 import { IHiredProfile } from "../../interfaces/profile";
 import { Loading } from "../../../components/Loading";
+import { UserDropdown } from "../../../components/UserDropdown";
 
 export const Profile = () => {
   const [user, setUser] = useState<IHiredProfile | null>(null);
@@ -34,7 +35,9 @@ export const Profile = () => {
     return (
       <>
         <Header>
-          <Avatar src={user.avatar_img} />
+          <UserDropdown>
+            <Avatar src={user?.avatar_img} />
+          </UserDropdown>
         </Header>
         <Container>
           <S.H2Styled>Editar Perfil</S.H2Styled>

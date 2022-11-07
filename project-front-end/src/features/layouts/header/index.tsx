@@ -8,6 +8,13 @@ import { Link } from "react-router-dom";
 export const Header = ({ children }: IChildren) => {
   const [isOn, setIsOn] = useState(false);
   const toggleSwitch = () => setIsOn(!isOn);
+
+  const spring = {
+    type: "spring",
+    stiffness: 700,
+    damping: 30,
+  };
+
   return (
     <S.StyledHeader>
       <S.Container>
@@ -27,10 +34,4 @@ export const Header = ({ children }: IChildren) => {
       </S.Container>
     </S.StyledHeader>
   );
-};
-
-const spring = {
-  type: "spring",
-  stiffness: 700,
-  damping: 30,
 };

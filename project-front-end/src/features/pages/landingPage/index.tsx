@@ -20,7 +20,7 @@ export const LandingPage = () => {
         <S.DivButtonsLandingStyled>
           <Button
             onClick={() => {
-              navigate("/home");
+              navigate("/contractorproposals");
             }}
             variant="quaternary"
             type="button"

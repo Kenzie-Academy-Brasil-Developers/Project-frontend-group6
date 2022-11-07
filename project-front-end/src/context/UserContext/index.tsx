@@ -1,5 +1,6 @@
-import { useContext, createContext } from "react"
-import { useNavigate } from "react-router-dom"
+
+import { useContext, createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   IAuthResponse,
   IDataUser,
@@ -10,14 +11,38 @@ import { api } from "../../features/services/axios"
 import { toast } from 'react-toastify'
 
 interface IUserContext {
-  loginUser: (dataUser: IRegister) => Promise<void>
-  submitRegister: (data: IRegister) => void
+  loginUser: (dataUser: IRegister) => Promise<void>;
+  submitRegister: (data: IRegister) => void;
+  openModal: () => void;
+  modal: boolean;
+  proposals: IProposals[],
+  setProposals: React.Dispatch<React.SetStateAction<IProposals[]>>,
+  update: boolean,
+  setUpdate: React.Dispatch<React.SetStateAction<boolean>>,
+}
+
+export interface IProposals {
+  userId: number;
+  is_active: string;
+  title: string;
+  description: string;
+  user: {
+    avatar_img: URL;
+    username: string;
+    contact: string;
+    id: number;
+  }
+  id: number;
 }
 
 export const UserContext = createContext<IUserContext>({} as IUserContext)
 
+
 export const UserProvider = ({ children }: IChildren) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [modal, setModal] = useState<boolean>(false);
+  const [proposals, setProposals] = useState<IProposals []>([]);
+  const [update, setUpdate] = useState<boolean>(false);
 
   const loginUser = async (dataUser: IRegister) => {
     try {
@@ -66,9 +91,12 @@ export const UserProvider = ({ children }: IChildren) => {
     registerUser(dataUser);
   };
 
+  const openModal = () => {
+    setModal(!modal);
+  };
 
   return (
-    <UserContext.Provider value={{ submitRegister, loginUser }}>
+    <UserContext.Provider value={{ submitRegister, loginUser, modal, openModal, proposals, setProposals, update, setUpdate }}>
       {children}
     </UserContext.Provider>
   )

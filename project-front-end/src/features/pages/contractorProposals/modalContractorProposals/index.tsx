@@ -48,7 +48,6 @@ export const ModalContractorProposal = ({ idProposal }: any) =>{
     const registerSubmit = async (data: IProposals) => {
         setUpdate(true);
         const token = localStorage.getItem('@rentalToken');
-        console.log(data)
 
         try {
             const body = {
@@ -61,12 +60,10 @@ export const ModalContractorProposal = ({ idProposal }: any) =>{
                     contractorId: user.id
                 }
             }
-            console.log(body)
 
             api.defaults.headers.common.authorization = `Bearer ${token}`
             const response = await api.patch(`proposals/${idProposal}`, body);
             toast.success("Avaliação recebida com sucesso!");
-            console.log(response);
         } catch (error) {
             toast.error("Erro ao avaliar!");
             console.log(error);

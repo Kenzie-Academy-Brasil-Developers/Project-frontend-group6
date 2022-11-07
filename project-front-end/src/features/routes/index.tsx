@@ -8,8 +8,6 @@ import { Login } from "../pages/login";
 import { Profile } from "../pages/profile";
 import { Register } from "../pages/register";
 
-// Alimentar aqui com as rotas prontas..
-
 export const RoutesMain = () => {
   return (
     <>

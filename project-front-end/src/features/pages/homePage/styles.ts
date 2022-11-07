@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledHome = styled.div`
+export const StyledHome = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -37,7 +37,7 @@ const StyledHome = styled.div`
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-      }      
+      }
     }
   }
 
@@ -49,5 +49,3 @@ const StyledHome = styled.div`
     }
   }
 `;
-
-export default StyledHome;

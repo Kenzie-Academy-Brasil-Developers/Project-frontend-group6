@@ -1,3 +1,4 @@
+import * as S from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Checkbox,
@@ -8,11 +9,10 @@ import {
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../../components/buttons";
+import { Button } from "../../../components/Buttons";
 import { IHiredProfile } from "../../interfaces/profile";
 import { api } from "../../services/axios";
 import { HireProfileSchema } from "../../validations/Other Validations";
-import * as S from "./styles";
 
 export const HireProfile = ({ user }: any) => {
   const [services, setServices] = useState<string[]>([]);

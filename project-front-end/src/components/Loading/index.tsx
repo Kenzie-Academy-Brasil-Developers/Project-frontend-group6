@@ -1,4 +1,4 @@
-import { LoadingStyled } from "./style";
+import { LoadingStyled } from "./styles";
 import logoForm from "../../assets/logoForm.svg";
 import PropagateLoader from "react-spinners/PropagateLoader";
 

@@ -26,7 +26,6 @@ useEffect(() => {
             api.defaults.headers.common.authorization = `Bearer ${token}`;
             const response = await api.get(`/proposals`);
             setProposals(response.data);
-            // console.log(response.data);
           } catch (error) {
             console.log(error);
           }
@@ -70,134 +69,7 @@ useEffect(() => {
         }
         </S.StyledItemContractorProposals>
 
-        ))}    
-
-        {/* <S.StyledItemContractorProposals>
-          <S.StyledProposalInfos>
-          <S.StyledDivDescription>
-            <S.StyledTitleProposal>TITULO</S.StyledTitleProposal>
-            <S.StyledDescriptionProposal>PROPOSTA</S.StyledDescriptionProposal>
-          </S.StyledDivDescription>
-          <S.StyledDivStatus>
-            <S.StyledStatusTitle>Status:</S.StyledStatusTitle>
-            <S.StyledStatusActual>STATUS ATUAL</S.StyledStatusActual>
-          </S.StyledDivStatus>
-          </S.StyledProposalInfos>
-          <Button type="submit" variant="terciary">Concluir</Button>
-        </S.StyledItemContractorProposals>
-
-        <S.StyledItemContractorProposals>
-          <S.StyledProposalInfos>
-          <S.StyledDivDescription>
-            <S.StyledTitleProposal>TITULO</S.StyledTitleProposal>
-            <S.StyledDescriptionProposal>PROPOSTA</S.StyledDescriptionProposal>
-          </S.StyledDivDescription>
-          <S.StyledDivStatus>
-            <S.StyledStatusTitle>Status:</S.StyledStatusTitle>
-            <S.StyledStatusActual>STATUS ATUAL</S.StyledStatusActual>
-          </S.StyledDivStatus>
-          </S.StyledProposalInfos>
-          <Button type="submit" variant="terciary">Concluir</Button>
-        </S.StyledItemContractorProposals>
-
-        <S.StyledItemContractorProposals>
-          <S.StyledProposalInfos>
-          <S.StyledDivDescription>
-            <S.StyledTitleProposal>TITULO</S.StyledTitleProposal>
-            <S.StyledDescriptionProposal>PROPOSTA</S.StyledDescriptionProposal>
-          </S.StyledDivDescription>
-          <S.StyledDivStatus>
-            <S.StyledStatusTitle>Status:</S.StyledStatusTitle>
-            <S.StyledStatusActual>STATUS ATUAL</S.StyledStatusActual>
-          </S.StyledDivStatus>
-          </S.StyledProposalInfos>
-          <Button type="submit" variant="terciary">Concluir</Button>
-        </S.StyledItemContractorProposals>
-
-        <S.StyledItemContractorProposals>
-          <S.StyledProposalInfos>
-          <S.StyledDivDescription>
-            <S.StyledTitleProposal>TITULO</S.StyledTitleProposal>
-            <S.StyledDescriptionProposal>PROPOSTA</S.StyledDescriptionProposal>
-          </S.StyledDivDescription>
-          <S.StyledDivStatus>
-            <S.StyledStatusTitle>Status:</S.StyledStatusTitle>
-            <S.StyledStatusActual>STATUS ATUAL</S.StyledStatusActual>
-          </S.StyledDivStatus>
-          </S.StyledProposalInfos>
-          <Button type="submit" variant="terciary">Concluir</Button>
-        </S.StyledItemContractorProposals>
-
-        <S.StyledItemContractorProposals>
-          <S.StyledProposalInfos>
-          <S.StyledDivDescription>
-            <S.StyledTitleProposal>TITULO</S.StyledTitleProposal>
-            <S.StyledDescriptionProposal>PROPOSTA</S.StyledDescriptionProposal>
-          </S.StyledDivDescription>
-          <S.StyledDivStatus>
-            <S.StyledStatusTitle>Status:</S.StyledStatusTitle>
-            <S.StyledStatusActual>STATUS ATUAL</S.StyledStatusActual>
-          </S.StyledDivStatus>
-          </S.StyledProposalInfos>
-          <Button type="submit" variant="terciary">Concluir</Button>
-        </S.StyledItemContractorProposals>
-
-        <S.StyledItemContractorProposals>
-          <S.StyledProposalInfos>
-          <S.StyledDivDescription>
-            <S.StyledTitleProposal>TITULO</S.StyledTitleProposal>
-            <S.StyledDescriptionProposal>PROPOSTA</S.StyledDescriptionProposal>
-          </S.StyledDivDescription>
-          <S.StyledDivStatus>
-            <S.StyledStatusTitle>Status:</S.StyledStatusTitle>
-            <S.StyledStatusActual>STATUS ATUAL</S.StyledStatusActual>
-          </S.StyledDivStatus>
-          </S.StyledProposalInfos>
-          <Button type="submit" variant="terciary">Concluir</Button>
-        </S.StyledItemContractorProposals>
-
-        <S.StyledItemContractorProposals>
-          <S.StyledProposalInfos>
-          <S.StyledDivDescription>
-            <S.StyledTitleProposal>TITULO</S.StyledTitleProposal>
-            <S.StyledDescriptionProposal>PROPOSTA</S.StyledDescriptionProposal>
-          </S.StyledDivDescription>
-          <S.StyledDivStatus>
-            <S.StyledStatusTitle>Status:</S.StyledStatusTitle>
-            <S.StyledStatusActual>STATUS ATUAL</S.StyledStatusActual>
-          </S.StyledDivStatus>
-          </S.StyledProposalInfos>
-          <Button type="submit" variant="terciary">Concluir</Button>
-        </S.StyledItemContractorProposals>
-
-        <S.StyledItemContractorProposals>
-          <S.StyledProposalInfos>
-          <S.StyledDivDescription>
-            <S.StyledTitleProposal>TITULO</S.StyledTitleProposal>
-            <S.StyledDescriptionProposal>PROPOSTA</S.StyledDescriptionProposal>
-          </S.StyledDivDescription>
-          <S.StyledDivStatus>
-            <S.StyledStatusTitle>Status:</S.StyledStatusTitle>
-            <S.StyledStatusActual>STATUS ATUAL</S.StyledStatusActual>
-          </S.StyledDivStatus>
-          </S.StyledProposalInfos>
-          <Button type="submit" variant="terciary">Concluir</Button>
-        </S.StyledItemContractorProposals>
-
-        <S.StyledItemContractorProposals>
-          <S.StyledProposalInfos>
-          <S.StyledDivDescription>
-            <S.StyledTitleProposal>TITULO</S.StyledTitleProposal>
-            <S.StyledDescriptionProposal>PROPOSTA</S.StyledDescriptionProposal>
-          </S.StyledDivDescription>
-          <S.StyledDivStatus>
-            <S.StyledStatusTitle>Status:</S.StyledStatusTitle>
-            <S.StyledStatusActual>STATUS ATUAL</S.StyledStatusActual>
-          </S.StyledDivStatus>
-          </S.StyledProposalInfos>
-
-          <Button type="submit" variant="terciary" onClick={() => openModal()}>Concluir</Button>
-        </S.StyledItemContractorProposals> */}
+        ))}
 
       </S.StyledListContractorProposals>
     </S.StyledContractorProposals>

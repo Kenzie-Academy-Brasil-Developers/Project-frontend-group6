@@ -1,12 +1,12 @@
 import * as S from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Button } from "../../../components/Buttons";
 import { ModalStyled } from "../../../components/Modal/styles";
-import { ModalProfileHireSchema } from "../../validations/Other Validations";
-import { api } from "../../services/axios";
-import axios from "axios";
 import { ErrorToast, SucessToast } from "../../libs/toastify";
+import { api } from "../../services/axios";
+import { ModalProfileHireSchema } from "../../validations/Other Validations";
 
 interface ISendPropose {
   title: string;

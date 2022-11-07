@@ -17,6 +17,10 @@ export const ProposalStyled = styled.section`
   flex-direction: column;
   gap: 1rem;
 
+  @media (max-width: 975px) {
+    width: 100%;
+  }
+
   & > h2 {
     font-size: 36px;
     font-weight: bold;
@@ -66,7 +70,7 @@ export const ProposalStyled = styled.section`
       border-radius: 8px;
 
       height: 150px;
-      width: 395px;
+      min-width: 395px;
 
       position: relative;
       & > figure {
@@ -134,6 +138,16 @@ export const ProposalStyled = styled.section`
         }
       }
     }
+
+    @media(max-width: 975px){
+      flex-direction: row;
+      height: fit-content;
+      max-height: 215px;
+      overflow-x: auto;
+      width: 100%;
+      border: 2px solid var(--grey1-color);
+
+    }
   }
 `;
 
@@ -141,6 +155,10 @@ export const FProposalStyled = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: 975px) {
+    width: 100%;
+  }
 
   & > h2 {
     font-size: 36px;
@@ -194,6 +212,14 @@ export const FProposalStyled = styled.section`
       width: 100%;
 
       position: relative;
+
+      @media (max-width: 975px) {
+        flex-direction: column;
+        overflow: auto;
+        min-height: 250px;
+        height: 285px;
+        min-width: 250px;
+      }
       & > figure {
         & > img {
           width: 102px;
@@ -266,6 +292,15 @@ export const FProposalStyled = styled.section`
   @media (max-width: 1200px) {
     & > ul {
       width: 460px;
+    }
+  }
+  @media (max-width: 975px) {
+    & > ul {
+      flex-direction: row;
+      width: 100%;
+      height: 365px;
+      overflow-x: scroll;
+      border: 2px solid var(--grey1-color);
     }
   }
 `;

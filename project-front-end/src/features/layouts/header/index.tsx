@@ -1,8 +1,8 @@
 import * as S from "./styles";
+import logo from "/src/assets/logoWhite.svg";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { IChildren } from "../../interfaces/children";
-import logo from "/src/assets/logowhite.png";
 import { Link } from "react-router-dom";
 
 export const Header = ({ children }: IChildren) => {
@@ -11,7 +11,7 @@ export const Header = ({ children }: IChildren) => {
   return (
     <S.StyledHeader>
       <S.Container>
-        <Link to="/">
+        <Link to="/dashboard">
           <img src={logo} alt="Logo" />
         </Link>
         <S.GoToRegister>

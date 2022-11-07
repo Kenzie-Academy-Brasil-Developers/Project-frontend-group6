@@ -1,28 +1,22 @@
+import * as S from "./styles";
 import {
   Checkbox,
   FormControlLabel,
   FormGroup,
   TextField,
 } from "@mui/material";
-import { Button } from "../../../components/buttons";
+import { Button } from "../../../components/Buttons";
 import { useForm } from "react-hook-form";
-import * as S from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CProfileSchema } from "../../validations/Other Validations";
+import { ICProfile } from "../../interfaces/profile";
+import { api } from "../../services/axios";
+import { useNavigate } from "react-router-dom";
 
-interface ICProfile {
-  name: string;
-  email: string;
-  contact: string;
-  gender: string;
-  location: string;
-  avatar_img: string;
-  services: string[];
-}
-
-export const CProfile = () => {
+export const CProfile = ({ user }: any) => {
   const [services, setServices] = useState<string[]>([]);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -30,9 +24,32 @@ export const CProfile = () => {
     formState: { errors },
   } = useForm<ICProfile>({ resolver: yupResolver(CProfileSchema) });
 
-  const onSubmit = (data: ICProfile) => {
-    data.services = services;
-    console.log(data);
+  const onSubmit = async (data: ICProfile) => {
+    data.services = [...services, user.services];
+
+    if (data.services.length == 0) {
+      if (user.services.length == 0) {
+        data.services = services;
+      } else {
+        data.services = user.services;
+      }
+    }
+
+    if (data.avatar_img.length == 0) {
+      data.avatar_img = user.avatar_img;
+    }
+
+    const token = localStorage.getItem("@rentalToken");
+
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+
+      await api.patch(`/users/${user.id}`, data);
+
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const limpaCheck = (remove: string) => {
@@ -40,13 +57,19 @@ export const CProfile = () => {
 
     setServices(filtro);
   };
+
+  const verifyCheck = (verify: string) => {
+    if (user.services !== undefined) {
+      const isCheck = user.services.some((elem: string) => elem == verify);
+      return isCheck;
+    }
+
+    return false;
+  };
   return (
     <S.CProfileStyled>
       <div>
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/219/219969.png"
-          alt=""
-        />
+        <img src={user.avatar_img} alt={user.name} />
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
@@ -55,6 +78,7 @@ export const CProfile = () => {
             label="Nome"
             variant="standard"
             color="secondary"
+            defaultValue={user.name}
             sx={{
               width: 260,
             }}
@@ -64,6 +88,7 @@ export const CProfile = () => {
           <TextField
             id="standard-basic"
             label="Email"
+            defaultValue={user.email}
             variant="standard"
             color="secondary"
             sx={{
@@ -77,6 +102,7 @@ export const CProfile = () => {
             label="Contato"
             variant="standard"
             color="secondary"
+            defaultValue={user.contact && user.contact}
             sx={{
               width: 260,
             }}
@@ -88,6 +114,7 @@ export const CProfile = () => {
             label="Gênero que se identifica"
             variant="standard"
             color="secondary"
+            defaultValue={user.gender && user.gender}
             sx={{
               width: 260,
             }}
@@ -99,6 +126,7 @@ export const CProfile = () => {
             label="Localidade"
             variant="standard"
             color="secondary"
+            defaultValue={user.location && user.location}
             sx={{
               width: 260,
             }}
@@ -120,6 +148,7 @@ export const CProfile = () => {
                           ? setServices([...services, "Alvenaria"])
                           : limpaCheck("Alvenaria")
                       }
+                      defaultChecked={verifyCheck("Alvenaria")}
                     />
                   }
                   label="Alvenaria"
@@ -133,6 +162,7 @@ export const CProfile = () => {
                           ? setServices([...services, "Marcenaria"])
                           : limpaCheck("Marcenaria")
                       }
+                      defaultChecked={verifyCheck("Marcenaria")}
                     />
                   }
                   label="Marcenaria"
@@ -146,6 +176,7 @@ export const CProfile = () => {
                           ? setServices([...services, "Eletricista"])
                           : limpaCheck("Eletricista")
                       }
+                      defaultChecked={verifyCheck("Eletricista")}
                     />
                   }
                   label="Eletricista"
@@ -161,6 +192,7 @@ export const CProfile = () => {
                           ? setServices([...services, "Hidraulica"])
                           : limpaCheck("Hidraulica")
                       }
+                      defaultChecked={verifyCheck("Hidraulica")}
                     />
                   }
                   label="Hidraulica"
@@ -174,6 +206,7 @@ export const CProfile = () => {
                           ? setServices([...services, "Mecanica"])
                           : limpaCheck("Mecanica")
                       }
+                      defaultChecked={verifyCheck("Mecanica")}
                     />
                   }
                   label="Mecanica"
@@ -187,6 +220,7 @@ export const CProfile = () => {
                           ? setServices([...services, "Diarista"])
                           : limpaCheck("Diarista")
                       }
+                      defaultChecked={verifyCheck("Diarista")}
                     />
                   }
                   label="Diarista"

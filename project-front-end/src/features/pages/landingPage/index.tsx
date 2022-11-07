@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../../components/buttons";
+import { Button } from "../../../components/Buttons";
 
 export const LandingPage = () => {
   const navigate = useNavigate();

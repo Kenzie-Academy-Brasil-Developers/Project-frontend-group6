@@ -2,8 +2,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { RoutesMain } from "./features/routes";
 import { GlobalStyle } from "./features/styles/globalStyles";
+import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+export const App = () => {
   return (
     <>
       <Router>
@@ -14,5 +15,3 @@ function App() {
     </>
   );
 }
-
-export default App;

@@ -1,3 +1,4 @@
+import * as S from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Checkbox,
@@ -7,23 +8,15 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "../../../components/buttons";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../../../components/Buttons";
+import { IHiredProfile } from "../../interfaces/profile";
+import { api } from "../../services/axios";
 import { HireProfileSchema } from "../../validations/Other Validations";
-import * as S from "./styles";
 
-interface IHiredProfile {
-  name: string;
-  email: string;
-  contact: string;
-  gender: string;
-  location: string;
-  description: string;
-  avatar_img: string;
-  services: string[];
-}
-
-export const HireProfile = () => {
-  const [services,setServices] = useState<string[]>([])
+export const HireProfile = ({ user }: any) => {
+  const [services, setServices] = useState<string[]>([]);
+  const navigate = useNavigate();
 
   const limpaCheck = (remove: string) => {
     const filtro = services.filter((elem) => elem != remove);
@@ -37,9 +30,41 @@ export const HireProfile = () => {
     formState: { errors },
   } = useForm<IHiredProfile>({ resolver: yupResolver(HireProfileSchema) });
 
-  const onSubmit = (data: IHiredProfile) => {
-    data.services = services
-    console.log(data);
+  const onSubmit = async (data: IHiredProfile) => {
+    data.services = [...services, user.services];
+
+    if (data.services.length == 0) {
+      if (user.services.length == 0) {
+        data.services = services;
+      } else {
+        data.services = user.services;
+      }
+    }
+
+    if (data.avatar_img.length == 0) {
+      data.avatar_img = user.avatar_img;
+    }
+
+    const token = localStorage.getItem("@rentalToken");
+
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+
+      await api.patch(`/users/${user.id}`, data);
+
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const verifyCheck = (verify: string) => {
+    if (user.services !== undefined) {
+      const isCheck = user.services.some((elem: string) => elem == verify);
+      return isCheck;
+    }
+
+    return false;
   };
 
   return (
@@ -52,6 +77,7 @@ export const HireProfile = () => {
             label="Nome"
             sx={{ width: 260 }}
             variant="standard"
+            defaultValue={user.name}
             {...register("name")}
           />
           <p>{errors.name?.message}</p>
@@ -61,6 +87,7 @@ export const HireProfile = () => {
             label="Email"
             sx={{ width: 260 }}
             variant="standard"
+            defaultValue={user.email}
             {...register("email")}
           />
           <p>{errors.email?.message}</p>
@@ -69,6 +96,7 @@ export const HireProfile = () => {
             color="secondary"
             label="Contato"
             sx={{ width: 260 }}
+            defaultValue={user.contact && user.contact}
             variant="standard"
             {...register("contact")}
           />
@@ -79,6 +107,7 @@ export const HireProfile = () => {
             label="Gênero que se identifica"
             sx={{ width: 260 }}
             variant="standard"
+            defaultValue={user.gender && user.gender}
             {...register("gender")}
           />
           <p>{errors.gender?.message}</p>
@@ -88,6 +117,7 @@ export const HireProfile = () => {
             label="Localidade"
             sx={{ width: 260 }}
             variant="standard"
+            defaultValue={user.location && user.location}
             {...register("location")}
           />
           <p>{errors.location?.message}</p>
@@ -99,65 +129,102 @@ export const HireProfile = () => {
             sx={{ width: 260 }}
             label="Descreva suas experiencias"
             variant="standard"
+            defaultValue={user.description && user.description}
             {...register("description")}
           />
           <p>{errors.description?.message}</p>
         </div>
         <div className="BoxProfile">
-          <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="" />
+          <img src={user.avatar_img} alt="" />
         </div>
         <div>
           <h3>Tipos de serviços</h3>
           <FormGroup className="GroupCheck">
             <div className="collum1">
               <FormControlLabel
-                control={<Checkbox color="secondary" onChange={(e) =>
-                  e.target.checked
-                    ? setServices([...services, "Alvenaria"])
-                    : limpaCheck("Alvenaria")
-                } />}
+                control={
+                  <Checkbox
+                    color="secondary"
+                    onChange={(e) =>
+                      e.target.checked
+                        ? setServices([...services, "Alvenaria"])
+                        : limpaCheck("Alvenaria")
+                    }
+                    defaultChecked={verifyCheck("Alvenaria")}
+                  />
+                }
                 label="Alvenaria"
               />
               <FormControlLabel
-                control={<Checkbox color="secondary" onChange={(e) =>
-                  e.target.checked
-                    ? setServices([...services, "Marcenaria"])
-                    : limpaCheck("Marcenaria")
-                } />}
+                control={
+                  <Checkbox
+                    color="secondary"
+                    onChange={(e) =>
+                      e.target.checked
+                        ? setServices([...services, "Marcenaria"])
+                        : limpaCheck("Marcenaria")
+                    }
+                    defaultChecked={verifyCheck("Marcenaria")}
+                  />
+                }
                 label="Marcenaria"
               />
               <FormControlLabel
-                control={<Checkbox color="secondary" onChange={(e) =>
-                  e.target.checked
-                    ? setServices([...services, "Eletricista"])
-                    : limpaCheck("Eletricista")
-                }/>}
+                control={
+                  <Checkbox
+                    color="secondary"
+                    onChange={(e) =>
+                      e.target.checked
+                        ? setServices([...services, "Eletricista"])
+                        : limpaCheck("Eletricista")
+                    }
+                    defaultChecked={verifyCheck("Eletricista")}
+                  />
+                }
                 label="Eletricista"
               />
             </div>
             <div className="collum2">
               <FormControlLabel
-                control={<Checkbox color="secondary" onChange={(e) =>
-                  e.target.checked
-                    ? setServices([...services, "Hidraulica"])
-                    : limpaCheck("Hidraulica")
-                }/>}
+                control={
+                  <Checkbox
+                    color="secondary"
+                    onChange={(e) =>
+                      e.target.checked
+                        ? setServices([...services, "Hidraulica"])
+                        : limpaCheck("Hidraulica")
+                    }
+                    defaultChecked={verifyCheck("Hidraulica")}
+                  />
+                }
                 label="Hidraulica"
               />
               <FormControlLabel
-                control={<Checkbox color="secondary" onChange={(e) =>
-                  e.target.checked
-                    ? setServices([...services, "Mecanica"])
-                    : limpaCheck("Mecanica")
-                } />}
+                control={
+                  <Checkbox
+                    color="secondary"
+                    onChange={(e) =>
+                      e.target.checked
+                        ? setServices([...services, "Mecanica"])
+                        : limpaCheck("Mecanica")
+                    }
+                    defaultChecked={verifyCheck("Mecanica")}
+                  />
+                }
                 label="Mecanica"
               />
               <FormControlLabel
-                control={<Checkbox color="secondary" onChange={(e) =>
-                  e.target.checked
-                    ? setServices([...services, "Diarista"])
-                    : limpaCheck("Diarista")
-                }/>}
+                control={
+                  <Checkbox
+                    color="secondary"
+                    onChange={(e) =>
+                      e.target.checked
+                        ? setServices([...services, "Diarista"])
+                        : limpaCheck("Diarista")
+                    }
+                    defaultChecked={verifyCheck("Diarista")}
+                  />
+                }
                 label="Diarista"
               />
             </div>
@@ -169,8 +236,8 @@ export const HireProfile = () => {
             label="Url da imagem de perfil"
             variant="standard"
             {...register("avatar_img")}
-            />
-            <p>{errors.avatar_img?.message}</p>
+          />
+          <p>{errors.avatar_img?.message}</p>
         </div>
         <Button type="submit" variant="terciary">
           Salvar

@@ -1,74 +1,195 @@
-import * as S from "./styles";
+import axios from "axios";
+import { api } from "../../services/axios";
 import { Button } from "../../../components/Buttons";
+import { UseRentalContext } from "../../../context/RentalContext";
+import { UserContext } from "../../../context/UserContext";
 import { ModalProfileHire } from "../ModalProfileHire";
+import { ProfileHireStyle } from "./styles";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ErrorToast } from "../../libs/toastify";
+import { Header } from "../header";
+import { Avatar } from "@mui/material";
+import { Container } from "../../styles/container";
+
+interface IHiredUser {
+  name: string;
+  email: string;
+  services: [];
+  avatar_img: string;
+  description: string;
+  id: number;
+  is_active: string;
+  user: {
+    contractorId: number;
+    contractorName: string;
+    avatar_img: string;
+  };
+  recomendation: string;
+}
 
 export const ContractHireP = () => {
+  const [hiredUser, setHiredUser] = useState<IHiredUser>({} as IHiredUser);
+
+  const [contractorUser, setContractorUser] = useState<IHiredUser>(
+    {} as IHiredUser
+  );
+  const [proposalsHired, setProposalsHired] = useState([]);
+
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const getHiredUser = async () => {
+    const token = localStorage.getItem("@rentalToken");
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+      const { data } = await api.get(`/users/1`);
+      setHiredUser(data);
+      setLoading(true);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(error);
+      }
+    }
+  };
+
+  const getDoneProposalsUser = async () => {
+    const token = localStorage.getItem("@rentalToken");
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+      const { data } = await api.get("/proposals?userId=1&is_active=Concluido");
+      setProposalsHired(data);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const erro = error.response?.data;
+        ErrorToast(erro);
+      }
+    }
+  };
+
+  const getContractorUser = async () => {
+    const token = localStorage.getItem("@rentalToken");
+    const userId = localStorage.getItem("@rentalId");
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+      const { data } = await api.get(`/users/${userId}`);
+      setContractorUser(data);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getDoneProposalsUser();
+    getHiredUser();
+  }, []);
+
   return (
     <>
-      <S.ProfileHireStyle>
-        <div className="HeaderContent">
-          <div>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/219/219969.png"
-              alt=""
+      {loading === false ? (
+        <div>Aguarde</div>
+      ) : (
+        <>
+          <Header>
+            <Avatar src={hiredUser.avatar_img} />
+          </Header>
+          <Container>
+            <ProfileHireStyle>
+              <div className="HeaderContent">
+                <div>
+                  <Avatar
+                    sx={{ width: 250, height: 250 }}
+                    src={hiredUser.avatar_img}
+                    alt={hiredUser.name}
+                  />
+                  <h3>{hiredUser.name}</h3>
+                </div>
+                <div>
+                  <p>Competencias</p>
+                  <ul>
+                    {hiredUser.services.length ? (
+                      hiredUser.services.map(
+                        (element: string, index: number) => (
+                          <li key={index}>
+                            <span>{element}</span>
+                          </li>
+                        )
+                      )
+                    ) : (
+                      <li>
+                        <span>Não há competências</span>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </div>
+              <div className="boxDescription">
+                <p>Descrição</p>
+                <div>
+                  {hiredUser.description ? (
+                    <p>{hiredUser.description}</p>
+                  ) : (
+                    <h2>Sem descrição</h2>
+                  )}
+                </div>
+              </div>
+              <div className="boxRatings">
+                <p>Recomendações</p>
+                <div>
+                  <ul>
+                    {proposalsHired.length ? (
+                      proposalsHired.map(
+                        (element: IHiredUser, index: number) => {
+                          if (element.recomendation.length > 0) {
+                            return (
+                              <li key={index}>
+                                <Avatar src={element.user.avatar_img} />
+                                <h4>{element.user.contractorName}</h4>
+                                <p>{element.recomendation}</p>
+                              </li>
+                            );
+                          } else {
+                            return (
+                              <h2 key={0}>Não existe nenhuma recomendação</h2>
+                            );
+                          }
+                        }
+                      )
+                    ) : (
+                      <h2>Não existe nenhuma recomendação</h2>
+                    )}
+                  </ul>
+                </div>
+              </div>
+              <div className="boxButton">
+                <Link type="button" to={"/home"}>
+                  Voltar
+                </Link>
+                <Button
+                  onClick={() => {
+                    getContractorUser();
+                    setShowModal(true);
+                  }}
+                  type="button"
+                  variant="terciary"
+                >
+                  Contratar
+                </Button>
+              </div>
+            </ProfileHireStyle>
+          </Container>
+          {showModal === true && (
+            <ModalProfileHire
+              isModal={showModal}
+              setIsModal={setShowModal}
+              contractor={contractorUser}
+              hired={hiredUser}
             />
-            <h3>Name</h3>
-          </div>
-          <div>
-            <p>Competencias</p>
-            <ul>
-              <li>
-                <span>Eletrica</span>
-              </li>
-              <li>
-                <span>Eletrica</span>
-              </li>
-              <li>
-                <span>Eletrica</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="boxDescription">
-          <p>Descrição</p>
-          <div>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-            </p>
-          </div>
-        </div>
-        <div className="boxRatings">
-          <p>Recomendações</p>
-          <div>
-            <ul>
-              <li>
-                <h4>Nome do Contratante</h4>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Tempore, eum sapiente, facilis dolores nulla mollitia, rem
-                  possimus assumenda quidem inventore quasi repellat itaque!
-                  Iusto quis blanditiis amet vel, possimus unde?
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="boxButton">
-          <Button type="button" variant="quaternary">
-            Voltar
-          </Button>
-          <Button type="button" variant="terciary">
-            Contratar
-          </Button>
-        </div>
-      </S.ProfileHireStyle>
-      <ModalProfileHire />
+          )}
+        </>
+      )}
     </>
   );
 };

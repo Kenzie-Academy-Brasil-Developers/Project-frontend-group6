@@ -15,7 +15,7 @@ export const Header = ({ children }: IChildren) => {
           <img src={logo} alt="Logo" />
         </Link>
         <S.GoToRegister>
-          <div className="switch" data-isOn={isOn} onClick={toggleSwitch}>
+          <div className="switch" data-ison={isOn} onClick={toggleSwitch}>
             <motion.div className="handle" layout transition={spring} />
           </div>
           {children}

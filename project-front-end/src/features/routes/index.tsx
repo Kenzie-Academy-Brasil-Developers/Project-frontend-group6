@@ -7,6 +7,7 @@ import { LandingPage } from "../pages/landingPage";
 import { Login } from "../pages/login";
 import { Profile } from "../pages/profile";
 import { Register } from "../pages/register";
+import { HiredDetails } from "../pages/workerDetails";
 
 // Alimentar aqui com as rotas prontas..
 
@@ -21,6 +22,7 @@ export const RoutesMain = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard/hiredetails" element={<HiredDetails />} />
         </Routes>
       </UserProvider>
     </>

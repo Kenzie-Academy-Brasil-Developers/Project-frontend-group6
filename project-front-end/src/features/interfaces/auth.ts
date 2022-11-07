@@ -9,8 +9,6 @@ export interface IRegister {
 export interface IDataUser extends IRegister {
   avatar_img: string;
   is_hired: boolean;
-  location: string;
-  contact: string;
   services: [];
 }
 

@@ -68,19 +68,6 @@ export const ContractHireP = () => {
     }
   };
 
-  // const getRecomendationUser = async () => {
-  //   const token = localStorage.getItem("@rentalToken");
-  //   try {
-  //     api.defaults.headers.common.authorization = `Bearer ${token}`;
-  //     const { data } = await api.get(`/users`);
-  //     setRatinUser(data);
-  //   } catch (error) {
-  //     if (axios.isAxiosError(error)) {
-  //       console.error(error);
-  //     }
-  //   }
-  // };
-
   const getContractorUser = async () => {
     const token = localStorage.getItem("@rentalToken");
     const userId = localStorage.getItem("@rentalId");

@@ -1,10 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
 import { Button } from "../../../components/buttons";
 import { ModalStyled } from "../../../components/Modal/styles";
-import { UserContext } from "../../../context/UserContext";
 import { ErrorToast, SucessToast } from "../../libs/toastify";
 import { api } from "../../services/axios";
 import { ModalProfileHireSchema } from "../../validations/Other Validations";

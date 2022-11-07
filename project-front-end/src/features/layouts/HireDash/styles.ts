@@ -139,14 +139,13 @@ export const ProposalStyled = styled.section`
       }
     }
 
-    @media(max-width: 975px){
+    @media (max-width: 975px) {
       flex-direction: row;
       height: fit-content;
       max-height: 215px;
       overflow-x: auto;
       width: 100%;
       border: 2px solid var(--grey1-color);
-
     }
   }
 `;

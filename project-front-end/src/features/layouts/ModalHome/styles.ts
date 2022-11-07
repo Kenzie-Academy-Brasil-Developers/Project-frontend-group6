@@ -9,7 +9,7 @@ export const SecStyled = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  text-align:center;
+  text-align: center;
   padding: 4rem 2rem 2rem 2rem;
   position: relative;
   border-radius: 8px;

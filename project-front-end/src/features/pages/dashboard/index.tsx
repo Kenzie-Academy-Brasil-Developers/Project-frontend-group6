@@ -5,6 +5,11 @@ import { Header } from "../../layouts/header";
 import { useEffect, useState } from "react";
 import { ModalHome } from "../../layouts/ModalHome";
 import { api } from "../../services/axios";
+import { Avatar } from "@mui/material";
+import { HireDash } from "../../layouts/HireDash";
+import { api } from "../../services/axios";
+import { Container } from "../../styles/container";
+
 
 interface IDataWorker {
   id: number;
@@ -16,24 +21,39 @@ interface IDataWorker {
 export const Dashboard = () => {
   const [isModal, setIsModal] = useState(false);
   const [workerData, setWorkerData] = useState<IDataWorker[]>([]);
+  const [user, setUser] = useState<any>(null);
+  
   useEffect(() => {
     async function loadWorkers() {
       try {
         const { data } = await api.get("/users?is_hired=true");
         setWorkerData(data);
-      } catch (error) {
+         } catch (error) {
+        console.error(error);
+      } loadWorkers();
+  }, []);
+      
+    
+     useEffect(() => {
+    async function getUser() {
+      const userId = localStorage.getItem("@rentalId");
+
+      try {
+        const { data } = await api.get<any>(`/users/${userId}`);
+
+        setUser(data);
+         } catch (error) {
         console.error(error);
       }
-    }
-
-    loadWorkers();
+    }   getUser();
   }, []);
+
+
+ 
   return (
     <>
       <Header>
-        <Link to="/login" onClick={() => localStorage.clear()}>
-          Sair
-        </Link>
+          <Avatar src={user?.avatar_img} />
       </Header>
       <StyledDash>
         <div className="topMenu">

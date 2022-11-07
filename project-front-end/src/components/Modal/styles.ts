@@ -12,4 +12,5 @@ export const ModalStyled = styled.div`
   align-items: center;
   justify-content: center;
   background-color: var(--secondary-color);
+  padding: 0 1rem;
 `;

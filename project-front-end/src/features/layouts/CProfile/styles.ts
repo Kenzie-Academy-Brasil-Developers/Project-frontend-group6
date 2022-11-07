@@ -29,6 +29,13 @@ export const CProfileStyled = styled.section`
     position: relative;
     padding-bottom: 3rem;
 
+    p {
+      font-size: 12px;
+      font-weight: bold;
+
+      color: var(--primary-color);
+    }
+
     & > div {
       display: flex;
       flex-direction: column;

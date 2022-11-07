@@ -1,4 +1,4 @@
-import StyledHome from "./styles";
+import * as S from "./styles";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/buttons";
 import { Header } from "../../layouts/header";
@@ -33,7 +33,7 @@ export const HomePage = () => {
       <Header>
         <Link to="/register">Cadastrar</Link>
       </Header>
-      <StyledHome>
+      <S.StyledHome>
         <h2 className="homeTitle">Encontre aqui as opções mais seguras</h2>
         <ul>
           {workerData.map((el) => (
@@ -55,6 +55,7 @@ export const HomePage = () => {
         </ul>
        
       </StyledHome>
+
 
       {isModal && <ModalHome isModal={isModal} setIsModal={setIsModal} />}
     </>

@@ -7,6 +7,7 @@ export const ModalStyled = styled.div`
   right: 0;
   width: 100vw;
   height: 100vh;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;

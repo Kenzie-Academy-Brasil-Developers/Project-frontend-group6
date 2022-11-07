@@ -17,6 +17,7 @@ const StyledHome = styled.div`
     gap: 2rem;
     li {
       padding: 1rem;
+      width: 100%;
       border-radius: 8px;
       background-color: var(--white-color);
       display: flex;

@@ -4,7 +4,7 @@ import { RoutesMain } from "./features/routes";
 import { GlobalStyle } from "./features/styles/globalStyles";
 import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+export const App = () => {
   return (
     <>
       <Router>
@@ -15,5 +15,3 @@ function App() {
     </>
   );
 }
-
-export default App;

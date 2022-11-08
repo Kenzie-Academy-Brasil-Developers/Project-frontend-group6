@@ -37,10 +37,6 @@ export const Dashboard = () => {
           <Avatar src={user?.avatar_img} />
         </UserDropdown>
       </Header>
-<<<<<<< HEAD
-      <Transition>Qualquer coisa aí</Transition>
-
-=======
       <Transition>
         <Container>
           {user == null ? (
@@ -52,7 +48,6 @@ export const Dashboard = () => {
           )}
         </Container>
       </Transition>
->>>>>>> deef3a89f036285f672beb12b3ccc5b8a4c2856d
       <Footer />
     </>
   );

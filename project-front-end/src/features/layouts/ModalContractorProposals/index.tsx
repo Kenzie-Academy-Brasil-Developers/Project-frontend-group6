@@ -1,16 +1,16 @@
 import { RiCloseLine } from "react-icons/ri";
 import { FormEvent, useContext, useEffect, useState } from "react";
-import { UserContext, IProposals } from "../../../../context/UserContext";
-import { toastAtributes } from "../../../libs/toastify";
+import { UserContext, IProposals } from "../../../context/UserContext";
+import { toastAtributes } from "../../libs/toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import * as S from "./styles";
 import { useForm } from "react-hook-form";
-import { ModalStyled } from "../../../../components/Modal/styles";
-import { Button } from "../../../../components/Buttons/index";
+import { ModalStyled } from "../../../components/Modal/styles";
+import { Button } from "../../../components/Buttons/index";
 import { toast } from "react-toastify";
-import { api } from "../../../services/axios";
-import { Transition } from "../../../../components/Transition";
+import { api } from "../../services/axios";
+import { Transition } from "../../../components/Transition";
 
 export const ModalContractorProposal = ({ idProposal }: any) => {
   const [user, setUser] = useState<any>({});

@@ -35,7 +35,7 @@ export const Dashboard = () => {
           <Avatar src={user?.avatar_img} />
         </UserDropdown>
       </Header>
-      <Transition><ContractDash/></Transition>
+      <Transition>Qualquer coisa aí</Transition>
 
       <Footer />
     </>

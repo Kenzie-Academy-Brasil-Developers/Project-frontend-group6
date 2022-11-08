@@ -10,6 +10,7 @@ import { api } from "../../services/axios";
 import { IHiredProfile } from "../../interfaces/profile";
 import { Loading } from "../../../components/Loading";
 import { UserDropdown } from "../../../components/UserDropdown";
+import { Footer } from "../../layouts/Footer";
 
 export const Profile = () => {
   const [user, setUser] = useState<IHiredProfile | null>(null);
@@ -47,6 +48,8 @@ export const Profile = () => {
             <CProfile user={user} />
           )}
         </Container>
+
+        <Footer />
       </>
     );
   }

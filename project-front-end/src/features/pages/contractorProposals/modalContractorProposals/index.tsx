@@ -4,10 +4,10 @@ import { UserContext, IProposals } from "../../../../context/UserContext";
 import { toastAtributes } from "../../../libs/toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import * as S from "./styles";
 import { useForm } from "react-hook-form";
 import { ModalStyled } from "../../../../components/Modal/styles";
-import * as S from "./styles";
-import { Button } from "./../../../../components/Buttons/index";
+import { Button } from "../../../../components/Buttons/index";
 import { toast } from "react-toastify";
 import { api } from "../../../services/axios";
 

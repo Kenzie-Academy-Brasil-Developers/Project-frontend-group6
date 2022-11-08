@@ -1,9 +1,8 @@
-// import "./styles.css";
-import * as S from "./styles";
+import "./styles.css";
+// import * as S from "./styles";
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { IChildren } from "../../features/interfaces/children";
-import { AiOutlineLogout } from "react-icons/ai";
 import { CgProfile, CgLogOut } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +25,7 @@ export const UserDropdown = ({ children }: IChildren) => {
   };
 
   return (
-    <NavStyled
+    <motion.nav
       initial={false}
       animate={isOpen ? "open" : "closed"}
       className="menu"
@@ -92,6 +91,6 @@ export const UserDropdown = ({ children }: IChildren) => {
           <span>Editar</span>
         </motion.li>
       </motion.ul>
-    </NavStyled>
+    </motion.nav>
   );
 };

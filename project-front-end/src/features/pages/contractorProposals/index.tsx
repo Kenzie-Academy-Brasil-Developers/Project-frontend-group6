@@ -8,6 +8,8 @@ import { useContext, useEffect, useState } from "react";
 import { UrlHistory } from "@remix-run/router/dist/history";
 import { UserContext } from "../../../context/UserContext";
 import { ModalContractorProposal } from "./modalContractorProposals";
+import { UserDropdown } from "../../../components/UserDropdown";
+import { Footer } from "../../layouts/Footer";
 
 export const ContractorProposals = () => {
   const [idProp, setIdProp] = useState<any>();
@@ -37,7 +39,9 @@ export const ContractorProposals = () => {
   return (
     <>
       <Header>
-        <Avatar src="https://cdn-icons-png.flaticon.com/512/219/219969.png" />
+        <UserDropdown>
+          <Avatar src="https://cdn-icons-png.flaticon.com/512/219/219969.png" />
+        </UserDropdown>
       </Header>
       {modal && <ModalContractorProposal idProposal={idProp} />}
       <S.StyledContractorProposals>
@@ -92,6 +96,7 @@ export const ContractorProposals = () => {
           ))}
         </S.StyledListContractorProposals>
       </S.StyledContractorProposals>
+      <Footer />
     </>
   );
 };

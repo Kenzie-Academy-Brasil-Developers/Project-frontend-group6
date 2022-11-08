@@ -10,9 +10,7 @@ export const ProfileHireStyle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
   width: 100%;
-
   background-color: var(--grey1-color);
   border-radius: 12px;
   padding: 50px;
@@ -83,6 +81,32 @@ export const ProfileHireStyle = styled.div`
     }
   }
 
+  a {
+    background-color: var(--white-color);
+
+    border-radius: 8px;
+
+    transition: 0.5s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 140px;
+    height: 48px;
+
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--primary-color);
+
+    :hover {
+      transition: 0.5s;
+
+      background-color: transparent;
+      border: 2px solid var(--white-color);
+    }
+  }
+
   .boxDescription {
     > p {
       ${subTitle}
@@ -92,6 +116,10 @@ export const ProfileHireStyle = styled.div`
       background-color: var(--white-color);
       padding: 2rem;
       border-radius: 8px;
+      > h2 {
+        text-align: center;
+        color: var(--primary-color);
+      }
     }
   }
 
@@ -119,6 +147,14 @@ export const ProfileHireStyle = styled.div`
           flex-direction: column;
           gap: 1rem;
           border-radius: 8px;
+        }
+
+        > h2 {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: var(--primary-color);
         }
       }
     }

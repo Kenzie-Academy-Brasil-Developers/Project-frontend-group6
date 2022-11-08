@@ -7,7 +7,7 @@ import { api } from "../../services/axios";
 import { useContext, useEffect, useState } from "react";
 import { UrlHistory } from "@remix-run/router/dist/history";
 import { UserContext } from "../../../context/UserContext";
-import { ModalContractorProposal } from "./modalContractorProposals";
+import { ModalContractorProposal } from "../../layouts/ModalContractorProposals";
 import { UserDropdown } from "../../../components/UserDropdown";
 import { Footer } from "../../layouts/Footer";
 import { Transition } from "../../../components/Transition";
@@ -57,6 +57,8 @@ export const ContractorProposals = () => {
           </S.StyledDivTitle>
 
           <S.StyledListContractorProposals>
+            {filterProposals.length == 0 && <S.StyledMessage>Você ainda não fez nenhuma proposta.</S.StyledMessage>}
+
             {filterProposals.map((proposal) => (
               <S.StyledItemContractorProposals
                 onClick={() => setIdProp(proposal.id)}

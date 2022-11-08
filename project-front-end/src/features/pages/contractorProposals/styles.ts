@@ -94,10 +94,15 @@ export const StyledDivDescription = styled.div`
   }
 `;
 
+export const StyledMessage = styled.h3`
+  font-weight: 700;
+  font-size: 18px;
+  color: #808080;
+`
+
 export const StyledTitleProposal = styled.h3`
   font-weight: 700;
   font-size: 18px;
-
   color: var(--primary-color);
 `;
 

@@ -1,7 +1,7 @@
 import { IChildren } from "../../interfaces/children";
 import { Header } from "../../layouts/Header";
 import * as S from "./styles";
-import { Button } from "./../../../components/Buttons/index";
+import { Button } from "../../../components/Buttons/index";
 import { Avatar } from "@mui/material";
 import { api } from "../../services/axios";
 import { useContext, useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import { ModalContractorProposal } from "./modalContractorProposals";
 import { UserDropdown } from "../../../components/UserDropdown";
 import { Footer } from "../../layouts/Footer";
 import { Transition } from "../../../components/Transition";
+import { Container } from "../../styles/container";
 
 export const ContractorProposals = () => {
   const [idProp, setIdProp] = useState<any>();
@@ -46,6 +47,8 @@ export const ContractorProposals = () => {
       </Header>
       {modal && <ModalContractorProposal idProposal={idProp} />}
       <Transition>
+        <Container>
+
         <S.StyledContractorProposals>
           <S.StyledDivTitle>
             <S.StyledTitleContractorProposals>
@@ -98,6 +101,7 @@ export const ContractorProposals = () => {
             ))}
           </S.StyledListContractorProposals>
         </S.StyledContractorProposals>
+        </Container>
       </Transition>
       <Footer />
     </>

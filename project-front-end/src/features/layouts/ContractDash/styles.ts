@@ -20,6 +20,7 @@ export const StyledDash = styled.div`
     .filterWorker {
       display: flex;
       justify-content: space-evenly;
+      gap: 1rem;
     }
 
     #workerLocation {
@@ -33,8 +34,9 @@ export const StyledDash = styled.div`
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 2rem;
+    height: 752px;
+    overflow-y: auto;
     li {
       padding: 1rem;
       width: 100%;
@@ -44,20 +46,15 @@ export const StyledDash = styled.div`
       flex-direction: column;
       align-items: center;
       gap: 1.4rem;
-      figure {
-        border-radius: 50%;
-        overflow: hidden;
-        width: 8rem;
-        img {
-          max-width: 100%;
-        }
-      }
+      height: max-content;
+      
       p {
         text-align: center;
         max-width: 14rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        height: 30px;
       }
     }
   }

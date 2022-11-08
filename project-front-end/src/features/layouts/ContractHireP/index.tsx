@@ -4,7 +4,7 @@ import { Button } from "../../../components/Buttons";
 import { UseRentalContext } from "../../../context/RentalContext";
 import { UserContext } from "../../../context/UserContext";
 import { ModalProfileHire } from "../ModalProfileHire";
-import { ProfileHireStyle } from "./styles";
+import { ProfileHireStyle, TitlePage } from "./styles";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ErrorToast } from "../../libs/toastify";
@@ -21,7 +21,7 @@ interface IHiredUser {
   is_active: string;
   user: {
     contractorId: number;
-    contractorName: string;
+    username: string;
     avatar_img: string;
   };
   recomendation: string;
@@ -42,7 +42,7 @@ export const ContractHireP = () => {
     const token = localStorage.getItem("@rentalToken");
     try {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
-      const { data } = await api.get(`/users/1`);
+      const { data } = await api.get(`/users/10`);
       setHiredUser(data);
       setLoading(true);
     } catch (error) {
@@ -56,7 +56,7 @@ export const ContractHireP = () => {
     const token = localStorage.getItem("@rentalToken");
     try {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
-      const { data } = await api.get("/proposals?userId=1&is_active=Concluido");
+      const { data } = await api.get("/proposals?userId=10&is_active=Concluido");
       setProposalsHired(data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -92,6 +92,7 @@ export const ContractHireP = () => {
       ) : (
         <>
           <Container>
+            <TitlePage>Perfil da colaboradora</TitlePage>
             <ProfileHireStyle>
               <div className="HeaderContent">
                 <div>
@@ -142,7 +143,7 @@ export const ContractHireP = () => {
                             return (
                               <li key={index}>
                                 <Avatar src={element.user.avatar_img} />
-                                <h4>{element.user.contractorName}</h4>
+                                <h4>{element.user.username}</h4>
                                 <p>{element.recomendation}</p>
                               </li>
                             );

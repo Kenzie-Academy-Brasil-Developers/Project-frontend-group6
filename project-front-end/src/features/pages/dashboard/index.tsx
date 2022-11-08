@@ -48,7 +48,6 @@ export const Dashboard = () => {
           )}
         </Container>
       </Transition>
-
       <Footer />
     </>
   );

@@ -13,7 +13,7 @@ export const FormStyled = styled.div<IFormStyled>`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  background-color: #f8f7f4;
+  background-color: var(--white-color);
 `;
 
 export const FormTop = styled.div`
@@ -22,6 +22,7 @@ export const FormTop = styled.div`
   gap: 10px;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   h2 {
     font-size: 35px;

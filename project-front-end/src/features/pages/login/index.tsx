@@ -69,7 +69,9 @@ export const Login = () => {
           <S.CampRedirectRegister>
             <p>
               Ainda não possui conta?{" "}
-              <S.SpanRegister to="/register">registro aqui</S.SpanRegister>
+              <S.SpanRegister to="/register">
+                Faça registro aqui.
+              </S.SpanRegister>
             </p>
           </S.CampRedirectRegister>
         </FormStructure>

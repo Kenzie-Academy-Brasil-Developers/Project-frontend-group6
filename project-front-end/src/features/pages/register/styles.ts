@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import BgAuth from "../../../assets/waves.svg";
 
 export const FormRegister = styled.form`
   width: 100%;
@@ -17,7 +18,22 @@ export const RegisterStyled = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background-color: var(--primary-color);
+  background-image: linear-gradient(#5c088450, #5c088470, #5c088490),
+    url(${BgAuth});
+  background-repeat: no-repeat;
+  background-position: bottom;
+  animation: animatedBackground 10s linear infinite alternate-reverse;
+
+  @keyframes animatedBackground {
+    0% {
+      background-size: cover;
+      background-position: 0% 22%;
+    }
+    100% {
+      background-size: cover;
+      background-position: 100% 22%;
+    }
+  } ;
 `;
 
 export const CampPassword = styled.div`
@@ -56,7 +72,7 @@ export const CampTypeUser = styled.div`
   label {
     font-weight: 700;
     font-size: 16px;
-    color: var(--blue-color);
+    color: var(--primary-color);
   }
 `;
 
@@ -70,7 +86,7 @@ export const CampCheckbox = styled.div`
 export const LabelTypeUser = styled.label`
   font-weight: 700;
   font-size: 16px;
-  color: var(--blue-color);
+  color: var(--primary-color);
 `;
 
 export const CampChoiceJob = styled.div`
@@ -133,6 +149,7 @@ export const CampRedirectLogin = styled.div`
   font-weight: 700;
   font-size: 16px;
   padding: 1rem 0 2rem 0;
+  text-align: center;
 
   p {
     color: #000;

@@ -14,6 +14,16 @@ export const CProfileStyled = styled.section`
 
   border-radius: 8px;
 
+  input,
+  span,
+  label,
+  textarea {
+    font-family: "Inter", sans-serif;
+    ::placeholder {
+      font-family: "Inter", sans-serif;
+    }
+  }
+
   & > div {
     & > img {
       width: 272px;

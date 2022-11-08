@@ -1,7 +1,7 @@
 import { IChildren } from "../../interfaces/children";
 import { Header } from "../../layouts/Header";
 import * as S from "./styles";
-import { Button } from "./../../../components/Buttons/index";
+import { Button } from "../../../components/Buttons/index";
 import { Avatar } from "@mui/material";
 import { api } from "../../services/axios";
 import { useContext, useEffect, useState } from "react";

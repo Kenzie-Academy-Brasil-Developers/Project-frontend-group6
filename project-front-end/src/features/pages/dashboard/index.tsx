@@ -34,7 +34,7 @@ export const Dashboard = () => {
         </UserDropdown>
       </Header>
 
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };

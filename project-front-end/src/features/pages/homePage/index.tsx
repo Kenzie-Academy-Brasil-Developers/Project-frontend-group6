@@ -5,6 +5,7 @@ import { Header } from "../../layouts/header";
 import { useEffect, useState } from "react";
 import { ModalHome } from "../../layouts/ModalHome";
 import { api } from "../../services/axios";
+import { Footer } from "../../layouts/Footer";
 
 interface IDataWorker {
   id: number;
@@ -56,6 +57,7 @@ export const HomePage = () => {
           ))}
         </ul>
       </S.StyledHome>
+      <Footer></Footer>
 
       {isModal && <ModalHome isModal={isModal} setIsModal={setIsModal} />}
     </>

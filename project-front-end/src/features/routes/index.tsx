@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { UserProvider } from "../../context/UserContext";
-import { ContractHireP } from "../layouts/ContractHireP";
 import { ContractorProposals } from "../pages/contractorProposals";
 import { Dashboard } from "../pages/dashboard";
 import { HomePage } from "../pages/homePage";
@@ -8,6 +7,7 @@ import { LandingPage } from "../pages/landingPage";
 import { Login } from "../pages/login";
 import { Profile } from "../pages/profile";
 import { Register } from "../pages/register";
+import { HiredDetails } from "../pages/workerDetails";
 
 export const RoutesMain = () => {
   return (
@@ -15,8 +15,12 @@ export const RoutesMain = () => {
       <UserProvider>
         <Routes>
           <Route
-            path="/contractorproposals"
+            path="/dashboard/contractorproposals"
             element={<ContractorProposals />}
+          ></Route>
+          <Route
+            path="/dashboard/hiredetails"
+            element={<HiredDetails />}
           ></Route>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/profile" element={<Profile />}></Route>

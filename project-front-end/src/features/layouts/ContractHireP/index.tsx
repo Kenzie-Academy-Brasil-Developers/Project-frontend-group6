@@ -8,7 +8,6 @@ import { ProfileHireStyle } from "./styles";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ErrorToast } from "../../libs/toastify";
-import { Header } from "../header";
 import { Avatar } from "@mui/material";
 import { Container } from "../../styles/container";
 
@@ -92,9 +91,6 @@ export const ContractHireP = () => {
         <div>Aguarde</div>
       ) : (
         <>
-          <Header>
-            <Avatar src={hiredUser.avatar_img} />
-          </Header>
           <Container>
             <ProfileHireStyle>
               <div className="HeaderContent">

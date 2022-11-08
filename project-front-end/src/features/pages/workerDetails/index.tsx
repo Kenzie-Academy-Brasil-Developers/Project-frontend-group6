@@ -1,8 +1,9 @@
 import { Avatar } from "@mui/material";
+import { Transition } from "../../../components/Transition";
 import { UserDropdown } from "../../../components/UserDropdown";
 import { ContractHireP } from "../../layouts/ContractHireP";
 import { Footer } from "../../layouts/Footer";
-import { Header } from "../../layouts/header";
+import { Header } from "../../layouts/Header";
 
 export const HiredDetails = () => {
   return (
@@ -14,7 +15,9 @@ export const HiredDetails = () => {
           />
         </UserDropdown>
       </Header>
-      <ContractHireP />
+      <Transition>
+        <ContractHireP />
+      </Transition>
       <Footer></Footer>
     </>
   );

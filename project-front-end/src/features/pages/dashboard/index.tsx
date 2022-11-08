@@ -1,4 +1,4 @@
-import { Header } from "../../layouts/header";
+import { Header } from "../../layouts/Header";
 import { Footer } from "../../layouts/Footer";
 import { useEffect, useState } from "react";
 import { api } from "../../services/axios";
@@ -7,6 +7,7 @@ import { ModalHome } from "../../layouts/ModalHome";
 import { HireDash } from "../../layouts/HireDash";
 import { Container } from "../../styles/container";
 import { UserDropdown } from "../../../components/UserDropdown";
+import { Transition } from "../../../components/Transition";
 
 export const Dashboard = () => {
   const [user, setUser] = useState<any>(null);
@@ -33,6 +34,7 @@ export const Dashboard = () => {
           <Avatar src={user?.avatar_img} />
         </UserDropdown>
       </Header>
+      <Transition>Renderização Condicional Aqui</Transition>
 
       <Footer />
     </>

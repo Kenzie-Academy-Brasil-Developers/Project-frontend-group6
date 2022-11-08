@@ -1,6 +1,6 @@
 import { CProfile } from "../../layouts/CProfile";
 import { HireProfile } from "../../layouts/HireProfile";
-import { Header } from "../../layouts/header";
+import { Header } from "../../layouts/Header";
 import { Avatar } from "@mui/material";
 import { Container } from "../../styles/container";
 import * as S from "./styles";
@@ -11,6 +11,7 @@ import { IHiredProfile } from "../../interfaces/profile";
 import { Loading } from "../../../components/Loading";
 import { UserDropdown } from "../../../components/UserDropdown";
 import { Footer } from "../../layouts/Footer";
+import { Transition } from "../../../components/Transition";
 
 export const Profile = () => {
   const [user, setUser] = useState<IHiredProfile | null>(null);
@@ -31,7 +32,11 @@ export const Profile = () => {
   }, []);
 
   if (user == null) {
-    return <Loading />;
+    return (
+      <Transition>
+        <Loading />
+      </Transition>
+    );
   } else {
     return (
       <>
@@ -40,14 +45,16 @@ export const Profile = () => {
             <Avatar src={user?.avatar_img} />
           </UserDropdown>
         </Header>
-        <Container>
-          <S.H2Styled>Editar Perfil</S.H2Styled>
-          {user.is_hired ? (
-            <HireProfile user={user} />
-          ) : (
-            <CProfile user={user} />
-          )}
-        </Container>
+        <Transition>
+          <Container>
+            <S.H2Styled>Editar Perfil</S.H2Styled>
+            {user.is_hired ? (
+              <HireProfile user={user} />
+            ) : (
+              <CProfile user={user} />
+            )}
+          </Container>
+        </Transition>
 
         <Footer />
       </>

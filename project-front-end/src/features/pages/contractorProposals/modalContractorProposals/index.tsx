@@ -10,6 +10,7 @@ import { ModalStyled } from "../../../../components/Modal/styles";
 import { Button } from "../../../../components/Buttons/index";
 import { toast } from "react-toastify";
 import { api } from "../../../services/axios";
+import { Transition } from "../../../../components/Transition";
 
 export const ModalContractorProposal = ({ idProposal }: any) => {
   const [user, setUser] = useState<any>({});
@@ -69,21 +70,23 @@ export const ModalContractorProposal = ({ idProposal }: any) => {
   };
 
   return (
-    <ModalStyled>
-      <S.FormRatingStyled onSubmit={handleSubmit(registerSubmit)}>
-        <RiCloseLine id="closed" onClick={openModal} />
-        <S.TitleRatingStyled>
-          Descreva como foi o atendimento da nossa colaboradora:
-          <S.TextRatingStyled
-            placeholder="Digite aqui..."
-            {...register("description")}
-          />
-        </S.TitleRatingStyled>
-        {errors.description?.message}
-        <Button type="submit" variant="terciary">
-          Enviar
-        </Button>
-      </S.FormRatingStyled>
-    </ModalStyled>
+    <Transition>
+      <ModalStyled>
+        <S.FormRatingStyled onSubmit={handleSubmit(registerSubmit)}>
+          <RiCloseLine id="closed" onClick={openModal} />
+          <S.TitleRatingStyled>
+            Descreva como foi o atendimento da nossa colaboradora:
+            <S.TextRatingStyled
+              placeholder="Digite aqui..."
+              {...register("description")}
+            />
+          </S.TitleRatingStyled>
+          {errors.description?.message}
+          <Button type="submit" variant="terciary">
+            Enviar
+          </Button>
+        </S.FormRatingStyled>
+      </ModalStyled>
+    </Transition>
   );
 };

@@ -1,5 +1,5 @@
 import { IChildren } from "../../interfaces/children";
-import { Header } from "../../layouts/header";
+import { Header } from "../../layouts/Header";
 import * as S from "./styles";
 import { Button } from "./../../../components/Buttons/index";
 import { Avatar } from "@mui/material";
@@ -10,6 +10,7 @@ import { UserContext } from "../../../context/UserContext";
 import { ModalContractorProposal } from "./modalContractorProposals";
 import { UserDropdown } from "../../../components/UserDropdown";
 import { Footer } from "../../layouts/Footer";
+import { Transition } from "../../../components/Transition";
 
 export const ContractorProposals = () => {
   const [idProp, setIdProp] = useState<any>();
@@ -44,58 +45,60 @@ export const ContractorProposals = () => {
         </UserDropdown>
       </Header>
       {modal && <ModalContractorProposal idProposal={idProp} />}
-      <S.StyledContractorProposals>
-        <S.StyledDivTitle>
-          <S.StyledTitleContractorProposals>
-            Minhas propostas
-          </S.StyledTitleContractorProposals>
-        </S.StyledDivTitle>
+      <Transition>
+        <S.StyledContractorProposals>
+          <S.StyledDivTitle>
+            <S.StyledTitleContractorProposals>
+              Minhas propostas
+            </S.StyledTitleContractorProposals>
+          </S.StyledDivTitle>
 
-        <S.StyledListContractorProposals>
-          {filterProposals.map((proposal) => (
-            <S.StyledItemContractorProposals
-              onClick={() => setIdProp(proposal.id)}
-              key={proposal.id}
-            >
-              <S.StyledProposalInfos>
-                <S.StyledDivDescription>
-                  <S.StyledTitleProposal>
-                    {" "}
-                    {proposal.title}{" "}
-                  </S.StyledTitleProposal>
-                  <S.StyledDescriptionProposal>
-                    {" "}
-                    {proposal.description}{" "}
-                  </S.StyledDescriptionProposal>
-                </S.StyledDivDescription>
-                <S.StyledDivStatus>
-                  <S.StyledStatusTitle>Status:</S.StyledStatusTitle>
-                  <S.StyledStatusActual>
-                    {" "}
-                    {proposal.is_active}{" "}
-                  </S.StyledStatusActual>
-                </S.StyledDivStatus>
-              </S.StyledProposalInfos>
+          <S.StyledListContractorProposals>
+            {filterProposals.map((proposal) => (
+              <S.StyledItemContractorProposals
+                onClick={() => setIdProp(proposal.id)}
+                key={proposal.id}
+              >
+                <S.StyledProposalInfos>
+                  <S.StyledDivDescription>
+                    <S.StyledTitleProposal>
+                      {" "}
+                      {proposal.title}{" "}
+                    </S.StyledTitleProposal>
+                    <S.StyledDescriptionProposal>
+                      {" "}
+                      {proposal.description}{" "}
+                    </S.StyledDescriptionProposal>
+                  </S.StyledDivDescription>
+                  <S.StyledDivStatus>
+                    <S.StyledStatusTitle>Status:</S.StyledStatusTitle>
+                    <S.StyledStatusActual>
+                      {" "}
+                      {proposal.is_active}{" "}
+                    </S.StyledStatusActual>
+                  </S.StyledDivStatus>
+                </S.StyledProposalInfos>
 
-              {proposal.is_active == "Em andamento" && (
-                <Button
-                  type="submit"
-                  variant="terciary"
-                  onClick={() => {
-                    openModal();
-                    localStorage.setItem(
-                      "@rentalPropId",
-                      JSON.stringify(proposal.id)
-                    );
-                  }}
-                >
-                  Concluir
-                </Button>
-              )}
-            </S.StyledItemContractorProposals>
-          ))}
-        </S.StyledListContractorProposals>
-      </S.StyledContractorProposals>
+                {proposal.is_active == "Em andamento" && (
+                  <Button
+                    type="submit"
+                    variant="terciary"
+                    onClick={() => {
+                      openModal();
+                      localStorage.setItem(
+                        "@rentalPropId",
+                        JSON.stringify(proposal.id)
+                      );
+                    }}
+                  >
+                    Concluir
+                  </Button>
+                )}
+              </S.StyledItemContractorProposals>
+            ))}
+          </S.StyledListContractorProposals>
+        </S.StyledContractorProposals>
+      </Transition>
       <Footer />
     </>
   );

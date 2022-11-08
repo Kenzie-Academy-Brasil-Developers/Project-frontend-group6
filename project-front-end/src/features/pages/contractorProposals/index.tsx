@@ -11,6 +11,7 @@ import { ModalContractorProposal } from "./modalContractorProposals";
 import { UserDropdown } from "../../../components/UserDropdown";
 import { Footer } from "../../layouts/Footer";
 import { Transition } from "../../../components/Transition";
+import { Container } from "../../styles/container";
 
 export const ContractorProposals = () => {
   const [idProp, setIdProp] = useState<any>();
@@ -46,6 +47,8 @@ export const ContractorProposals = () => {
       </Header>
       {modal && <ModalContractorProposal idProposal={idProp} />}
       <Transition>
+        <Container>
+
         <S.StyledContractorProposals>
           <S.StyledDivTitle>
             <S.StyledTitleContractorProposals>
@@ -98,6 +101,7 @@ export const ContractorProposals = () => {
             ))}
           </S.StyledListContractorProposals>
         </S.StyledContractorProposals>
+        </Container>
       </Transition>
       <Footer />
     </>

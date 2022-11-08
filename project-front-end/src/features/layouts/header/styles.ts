@@ -49,6 +49,8 @@ export const GoToRegister = styled.div`
     border-radius: 0.8rem;
     padding: 0.2rem;
     cursor: pointer;
+    margin-right: -90px;
+    z-index: 1000;
   }
 
   .switch[data-isOn="true"] {

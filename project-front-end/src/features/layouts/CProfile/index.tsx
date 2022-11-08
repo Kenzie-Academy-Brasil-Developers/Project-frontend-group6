@@ -15,7 +15,7 @@ import { api } from "../../services/axios";
 import { useNavigate } from "react-router-dom";
 
 export const CProfile = ({ user }: any) => {
-  const [services, setServices] = useState<string[]>([]);
+  const [services, setServices] = useState<string[]>(user.services);
   const navigate = useNavigate();
 
   const {
@@ -25,15 +25,7 @@ export const CProfile = ({ user }: any) => {
   } = useForm<ICProfile>({ resolver: yupResolver(CProfileSchema) });
 
   const onSubmit = async (data: ICProfile) => {
-    data.services = [...services, user.services];
-
-    if (data.services.length == 0) {
-      if (user.services.length == 0) {
-        data.services = services;
-      } else {
-        data.services = user.services;
-      }
-    }
+    data.services = services;
 
     if (data.avatar_img.length == 0) {
       data.avatar_img = user.avatar_img;

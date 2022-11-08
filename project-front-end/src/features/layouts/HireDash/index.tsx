@@ -7,8 +7,6 @@ export const HireDash = () => {
   const [proposals, setProposals] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(proposals);
-
   const filterProposals = (status: string) => {
     const filter = proposals.filter((elem: any) => elem.is_active == status);
     return filter;

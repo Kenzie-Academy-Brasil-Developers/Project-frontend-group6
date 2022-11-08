@@ -47,7 +47,7 @@ export const StyledDash = styled.div`
       align-items: center;
       gap: 1.4rem;
       height: max-content;
-      
+
       p {
         text-align: center;
         max-width: 14rem;
@@ -61,6 +61,7 @@ export const StyledDash = styled.div`
 
   @media (min-width: 460px) {
     ul {
+      width: 1200px;
       li {
         width: 16rem;
       }

@@ -1,11 +1,12 @@
 import * as S from "./styles";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/Buttons";
-import { Header } from "../../layouts/header";
+import { Header } from "../../layouts/Header";
 import { useEffect, useState } from "react";
 import { ModalHome } from "../../layouts/ModalHome";
 import { api } from "../../services/axios";
 import { Footer } from "../../layouts/Footer";
+import { Transition } from "../../../components/Transition";
 
 interface IDataWorker {
   id: number;
@@ -36,27 +37,29 @@ export const HomePage = () => {
       <Header>
         <Link to="/register">Cadastrar</Link>
       </Header>
-      <S.StyledHome>
-        <h2 className="homeTitle">Encontre aqui as opções mais seguras</h2>
-        <ul>
-          {workerData.map((el) => (
-            <li key={el.id}>
-              <figure>
-                <img src={el.avatar_img} alt={el.name} />
-              </figure>
-              <h2>{el.name}</h2>
-              <p>{el.description}</p>
-              <Button
-                type="button"
-                variant="terciary"
-                onClick={() => setIsModal(!isModal)}
-              >
-                Abrir
-              </Button>
-            </li>
-          ))}
-        </ul>
-      </S.StyledHome>
+      <Transition>
+        <S.StyledHome>
+          <h2 className="homeTitle">Encontre aqui as opções mais seguras</h2>
+          <ul>
+            {workerData.map((el) => (
+              <li key={el.id}>
+                <figure>
+                  <img src={el.avatar_img} alt={el.name} />
+                </figure>
+                <h2>{el.name}</h2>
+                <p>{el.description}</p>
+                <Button
+                  type="button"
+                  variant="terciary"
+                  onClick={() => setIsModal(!isModal)}
+                >
+                  Abrir
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </S.StyledHome>
+      </Transition>
       <Footer></Footer>
 
       {isModal && <ModalHome isModal={isModal} setIsModal={setIsModal} />}

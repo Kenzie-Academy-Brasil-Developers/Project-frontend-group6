@@ -15,7 +15,7 @@ import { api } from "../../services/axios";
 import { HireProfileSchema } from "../../validations/Other Validations";
 
 export const HireProfile = ({ user }: any) => {
-  const [services, setServices] = useState<string[]>([]);
+  const [services, setServices] = useState<string[]>(user.services);
   const navigate = useNavigate();
 
   const limpaCheck = (remove: string) => {
@@ -31,15 +31,7 @@ export const HireProfile = ({ user }: any) => {
   } = useForm<IHiredProfile>({ resolver: yupResolver(HireProfileSchema) });
 
   const onSubmit = async (data: IHiredProfile) => {
-    data.services = [...services, user.services];
-
-    if (data.services.length == 0) {
-      if (user.services.length == 0) {
-        data.services = services;
-      } else {
-        data.services = user.services;
-      }
-    }
+    data.services = services;
 
     if (data.avatar_img.length == 0) {
       data.avatar_img = user.avatar_img;

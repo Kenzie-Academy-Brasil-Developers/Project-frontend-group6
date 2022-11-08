@@ -12,6 +12,10 @@ export const FooterContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 400px;
+
+    @media (max-width: 730px) {
+      width: 100%;
+    }
   }
 
   .animatedFooter {
@@ -21,11 +25,19 @@ export const FooterContainer = styled.div`
     padding: 1rem 4rem;
     width: 100%;
     animation: fadeInUp 1.5s;
+
+    @media (max-width: 730px) {
+      flex-direction: column;
+    }
   }
 
   .logo {
     width: 250px;
     height: 200px;
+
+    @media (max-width: 730px) {
+      display: none;
+    }
   }
   .logo img {
     width: 100%;
@@ -39,6 +51,11 @@ export const FooterContainer = styled.div`
     justify-content: center;
     gap: 1rem;
     width: 100%;
+
+    @media (max-width: 380px) {
+      flex-direction: column;
+      gap: 0;
+    }
   }
 
   .secondList {

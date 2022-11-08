@@ -15,6 +15,16 @@ export const EditProfile = styled.div`
   padding: 90px 45px;
   position: relative;
 
+  input,
+  span,
+  label,
+  textarea {
+    font-family: "Inter", sans-serif;
+    ::placeholder {
+      font-family: "Inter", sans-serif;
+    }
+  }
+
   /* terciary */
 
   h3 {

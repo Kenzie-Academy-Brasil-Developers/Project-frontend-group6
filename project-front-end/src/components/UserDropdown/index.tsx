@@ -1,10 +1,12 @@
 import "./styles.css";
 // import * as S from "./styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { IChildren } from "../../features/interfaces/children";
-import { CgProfile, CgLogOut } from "react-icons/cg";
+import { CgProfile, CgLogOut, CgUserList } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
+import { IHiredProfile } from "../../features/interfaces/profile";
+import { api } from "../../features/services/axios";
 
 const itemVariants: Variants = {
   open: {
@@ -18,6 +20,23 @@ const itemVariants: Variants = {
 export const UserDropdown = ({ children }: IChildren) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<IHiredProfile | null>(null);
+
+  useEffect(() => {
+    async function getUser() {
+      const userId = localStorage.getItem("@rentalId");
+
+      try {
+        const { data } = await api.get<IHiredProfile>(`/users/${userId}`);
+
+        setUser(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getUser();
+  }, []);
+
   const logout = () => {
     localStorage.removeItem("@rentalToken");
     localStorage.removeItem("@rentalId");
@@ -30,7 +49,8 @@ export const UserDropdown = ({ children }: IChildren) => {
       animate={isOpen ? "open" : "closed"}
       className="menu"
     >
-      <motion.button
+      <motion.div
+        className="buttonMenu"
         whileTap={{ scale: 0.97 }}
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -43,7 +63,7 @@ export const UserDropdown = ({ children }: IChildren) => {
           transition={{ duration: 0.2 }}
           style={{ originY: 0.55 }}
         ></motion.div>
-      </motion.button>
+      </motion.div>
       <motion.ul
         className="listDropdown"
         variants={{
@@ -71,17 +91,6 @@ export const UserDropdown = ({ children }: IChildren) => {
         <motion.li
           variants={itemVariants}
           onClick={() => {
-            logout();
-          }}
-        >
-          <div className="divIcon">
-            <CgLogOut />
-          </div>
-          <span>Logout</span>
-        </motion.li>
-        <motion.li
-          variants={itemVariants}
-          onClick={() => {
             navigate("/profile");
           }}
         >
@@ -89,6 +98,30 @@ export const UserDropdown = ({ children }: IChildren) => {
             <CgProfile />
           </div>
           <span>Editar</span>
+        </motion.li>
+        {!user?.is_hired && (
+          <motion.li
+            variants={itemVariants}
+            onClick={() => {
+              navigate("/dashboard/contractorproposals");
+            }}
+          >
+            <div className="divIcon">
+              <CgUserList />
+            </div>
+            <span>Propostas</span>
+          </motion.li>
+        )}
+        <motion.li
+          variants={itemVariants}
+          onClick={() => {
+            logout();
+          }}
+        >
+          <div className="divIcon">
+            <CgLogOut />
+          </div>
+          <span>Logout</span>
         </motion.li>
       </motion.ul>
     </motion.nav>

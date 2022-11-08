@@ -11,7 +11,7 @@ export const StyledContractorProposals = styled.main`
 `;
 
 export const StyledDivTitle = styled.div`
-  width: 80%;
+  width: 100%;
 
   @media (max-width: 600px) {
     width: 95%;
@@ -26,11 +26,12 @@ export const StyledTitleContractorProposals = styled.h2`
 `;
 
 export const StyledListContractorProposals = styled.ul`
-  width: 80%;
+  width: 100%;
+  height: 665px;
   background-color: var(--grey1-color);
   border-radius: 8px;
   padding: 0.5rem 1rem;
-  max-height: 33rem;
+  max-height: 42rem;
   overflow-y: overlay;
 
   ::-webkit-scrollbar {
@@ -93,10 +94,15 @@ export const StyledDivDescription = styled.div`
   }
 `;
 
+export const StyledMessage = styled.h3`
+  font-weight: 700;
+  font-size: 18px;
+  color: #808080;
+`
+
 export const StyledTitleProposal = styled.h3`
   font-weight: 700;
   font-size: 18px;
-
   color: var(--primary-color);
 `;
 

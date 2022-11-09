@@ -7,6 +7,7 @@ import { CgProfile, CgLogOut, CgUserList } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import { IHiredProfile } from "../../features/interfaces/profile";
 import { api } from "../../features/services/axios";
+import { UseRentalContext } from "../../context/RentalContext";
 
 const itemVariants: Variants = {
   open: {
@@ -20,28 +21,7 @@ const itemVariants: Variants = {
 export const UserDropdown = ({ children }: IChildren) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState<IHiredProfile | null>(null);
-
-  useEffect(() => {
-    async function getUser() {
-      const userId = localStorage.getItem("@rentalId");
-
-      try {
-        const { data } = await api.get<IHiredProfile>(`/users/${userId}`);
-
-        setUser(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getUser();
-  }, []);
-
-  const logout = () => {
-    localStorage.removeItem("@rentalToken");
-    localStorage.removeItem("@rentalId");
-    navigate("/login");
-  };
+  const { user, logout } = UseRentalContext();
 
   return (
     <motion.nav

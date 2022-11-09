@@ -31,6 +31,7 @@ export const DivSecundaria = styled.div`
     padding: 0.4rem;
     border-radius: 4px;
     transition: 0.5s;
+    margin-left: 90px;
     :hover {
       transition: 0.5s;
       background-color: transparent;

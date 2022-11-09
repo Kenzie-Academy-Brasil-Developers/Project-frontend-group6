@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHome = styled.div`
-  max-width: 1200px;
-  height: 800px;
+  width: 100%;
   margin: 0 auto;
 
   .topMenu {

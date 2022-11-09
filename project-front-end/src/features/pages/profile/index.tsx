@@ -9,9 +9,15 @@ import { UserDropdown } from "../../../components/UserDropdown";
 import { Footer } from "../../layouts/Footer";
 import { Transition } from "../../../components/Transition";
 import { UseRentalContext } from "../../../context/RentalContext";
+import { useEffect } from "react";
 
 export const Profile = () => {
-  const { user } = UseRentalContext();
+  const { user, getUser } = UseRentalContext();
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <>
       <Header>

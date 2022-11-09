@@ -8,9 +8,14 @@ import { Transition } from "../../../components/Transition";
 import { ContractDash } from "../../layouts/ContractDash";
 import { Loading } from "../../../components/Loading";
 import { UseRentalContext } from "../../../context/RentalContext";
+import { useEffect } from "react";
 
 export const Dashboard = () => {
-  const { user } = UseRentalContext();
+  const { user, getUser } = UseRentalContext();
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <>

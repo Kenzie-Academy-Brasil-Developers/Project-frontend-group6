@@ -4,31 +4,29 @@ import { Button } from "../../../components/Buttons";
 import { ModalProfileHire } from "../ModalProfileHire";
 import { ProfileHireStyle, TitlePage } from "./styles";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { ErrorToast } from "../../libs/toastify";
 import { Avatar } from "@mui/material";
 import { Container } from "../../styles/container";
 import { IHiredUser } from "../../interfaces/layouts";
 import { UseRentalContext } from "../../../context/RentalContext";
+import { Transition } from "../../../components/Transition";
+import { Loading } from "../../../components/Loading";
 
 export const ContractHireP = () => {
-  const { hiredUser, setHiredUser } = UseRentalContext();
-
-  const [contractorUser, setContractorUser] = useState<IHiredUser>(
-    {} as IHiredUser
-  );
+  const { user } = UseRentalContext();
+  const [hiredUser, setHiredUser] = useState<IHiredUser | null>(null);
   const [proposalsHired, setProposalsHired] = useState([]);
-
-  const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const getHiredUser = async () => {
     const token = localStorage.getItem("@rentalToken");
+    const id = localStorage.getItem("@rentalHireId");
     try {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
-      const { data } = await api.get(`/users/3`);
+      const { data } = await api.get(`/users/${id}`);
       setHiredUser(data);
-      setLoading(true);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error(error);
@@ -38,28 +36,22 @@ export const ContractHireP = () => {
 
   const getDoneProposalsUser = async () => {
     const token = localStorage.getItem("@rentalToken");
+    const id = localStorage.getItem("@rentalHireId");
     try {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
-      const { data } = await api.get("/proposals?userId=3&is_active=Concluido");
+      const { data } = await api.get(
+        `/proposals?userId=${id}&is_active=Concluido`
+      );
       setProposalsHired(data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const erro = error.response?.data;
         ErrorToast(erro);
-      }
-    }
-  };
-
-  const getContractorUser = async () => {
-    const token = localStorage.getItem("@rentalToken");
-    const userId = localStorage.getItem("@rentalId");
-    try {
-      api.defaults.headers.common.authorization = `Bearer ${token}`;
-      const { data } = await api.get(`/users/${userId}`);
-      setContractorUser(data);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error(error);
+        if (erro === "jwt expired") {
+          localStorage.removeItem("@rentalToken");
+          localStorage.removeItem("@rentalId");
+          navigate("/login");
+        }
       }
     }
   };
@@ -71,8 +63,10 @@ export const ContractHireP = () => {
 
   return (
     <>
-      {loading === false ? (
-        <div>Aguarde</div>
+      {hiredUser === null ? (
+        <Transition>
+          <Loading />
+        </Transition>
       ) : (
         <>
           <Container>
@@ -85,7 +79,10 @@ export const ContractHireP = () => {
                     src={hiredUser.avatar_img}
                     alt={hiredUser.name}
                   />
-                  <h3>{hiredUser.name}</h3>
+                  <div>
+                    <h3>{hiredUser.name}</h3>
+                    <span>{hiredUser.location}</span>
+                  </div>
                 </div>
                 <div>
                   <p>Competencias</p>
@@ -127,7 +124,7 @@ export const ContractHireP = () => {
                             return (
                               <li key={index}>
                                 <Avatar src={element.user.avatar_img} />
-                                <h4>{element.user.username}</h4>
+                                <h4>{element.user.contractorName}</h4>
                                 <p>{element.recomendation}</p>
                               </li>
                             );
@@ -145,12 +142,11 @@ export const ContractHireP = () => {
                 </div>
               </div>
               <div className="boxButton">
-                <Link type="button" to={"/home"}>
+                <Link type="button" to={"/dashboard"}>
                   Voltar
                 </Link>
                 <Button
                   onClick={() => {
-                    getContractorUser();
                     setShowModal(true);
                   }}
                   type="button"
@@ -165,7 +161,7 @@ export const ContractHireP = () => {
             <ModalProfileHire
               isModal={showModal}
               setIsModal={setShowModal}
-              contractor={contractorUser}
+              contractor={user}
               hired={hiredUser}
             />
           )}

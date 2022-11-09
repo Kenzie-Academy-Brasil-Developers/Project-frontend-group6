@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import { Autocomplete, Avatar, TextField } from "@mui/material";
 import { NoWorkers } from "../NoWorkers";
 import { IDataWorker } from "../../interfaces/layouts";
+import { useNavigate } from "react-router-dom";
 
 export const ContractDash = () => {
-  const [isModal, setIsModal] = useState(false);
+  const navigate = useNavigate();
   const [workerData, setWorkerData] = useState<IDataWorker[]>([]);
-  const [fServices, setFServices] = useState<IDataWorker[]>([]);
   const [fLocations, setFLocations] = useState<IDataWorker[]>([]);
   const [optServices, setOptServices] = useState("");
   const [optLocations, setOptLocations] = useState("");
@@ -44,7 +44,10 @@ export const ContractDash = () => {
       <Button
         type="button"
         variant="terciary"
-        onClick={() => setIsModal(!isModal)}
+        onClick={() => {
+          localStorage.setItem("@rentalHireId", JSON.stringify(el.id));
+          navigate("/dashboard/hiredetails");
+        }}
       >
         Abrir
       </Button>

@@ -15,7 +15,6 @@ import { Container } from "../../styles/container";
 export const HomePage = () => {
   const [isModal, setIsModal] = useState(false);
   const [workerData, setWorkerData] = useState<IDataWorker[]>([]);
-  const [fServices, setFServices] = useState<IDataWorker[]>([]);
   const [fLocations, setFLocations] = useState<IDataWorker[]>([]);
   const [optServices, setOptServices] = useState("");
   const [optLocations, setOptLocations] = useState("");

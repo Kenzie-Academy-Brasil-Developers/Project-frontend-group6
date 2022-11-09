@@ -4,11 +4,13 @@ import { Loading } from "../../../components/Loading";
 import { api } from "../../services/axios";
 import { UseRentalContext } from "../../../context/RentalContext";
 import { IProposals } from "../../interfaces/context";
+import { ModalProposeA } from "../ModalProposeA";
 
 export const HireDash = () => {
   const { idUser, tokenUser } = UseRentalContext();
   const [proposals, setProposals] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [showModal,setShowModal] = useState(false)
 
   const filterProposals = (status: string) => {
     const filter = proposals.filter(
@@ -54,7 +56,7 @@ export const HireDash = () => {
                 </li>
               ))
             ) : (
-              <h2>Texto</h2>
+              <h2 id="textNone">Texto</h2>
             )}
           </ul>
         </S.ProposalStyled>
@@ -76,10 +78,11 @@ export const HireDash = () => {
                 </li>
               ))
             ) : (
-              <h2>Texto</h2>
+              <h2 id="textNone">Texto</h2>
             )}
           </ul>
         </S.FProposalStyled>
+        { showModal && <ModalProposeA setShowModal={setShowModal} showModal={showModal}/>}
       </S.DashStyled>
     );
   }

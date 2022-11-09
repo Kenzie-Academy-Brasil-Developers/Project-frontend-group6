@@ -13,4 +13,5 @@ export const ModalStyled = styled.div`
   justify-content: center;
   background-color: var(--secondary-color);
   padding: 0 1rem;
+  z-index: 2000;
 `;

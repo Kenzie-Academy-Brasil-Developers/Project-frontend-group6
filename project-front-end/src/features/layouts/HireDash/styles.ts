@@ -11,6 +11,10 @@ export const DashStyled = styled.main`
     align-items: center;
     gap: 2rem;
   }
+
+  #textNone{
+    color: var(--grey1-color)
+  }
 `;
 
 export const ProposalStyled = styled.section`
@@ -303,4 +307,6 @@ export const FProposalStyled = styled.section`
       border: 2px solid var(--grey1-color);
     }
   }
+
+
 `;

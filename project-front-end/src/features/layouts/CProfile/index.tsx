@@ -8,7 +8,7 @@ import {
 import { Button } from "../../../components/Buttons";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CProfileSchema } from "../../validations/Other Validations";
 import { ICProfile } from "../../interfaces/profile";
 import { api } from "../../services/axios";

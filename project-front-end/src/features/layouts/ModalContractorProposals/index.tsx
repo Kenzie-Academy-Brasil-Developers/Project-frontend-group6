@@ -1,19 +1,26 @@
-import { RiCloseLine } from "react-icons/ri";
-import { FormEvent, useContext, useEffect, useState } from "react";
-import { UserContext, IProposals } from "../../../context/UserContext";
-import { toastAtributes } from "../../libs/toastify";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import * as S from "./styles";
+import { RiCloseLine } from "react-icons/ri";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../../context/UserContext";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { ModalStyled } from "../../../components/Modal/styles";
 import { Button } from "../../../components/Buttons/index";
 import { toast } from "react-toastify";
 import { api } from "../../services/axios";
 import { Transition } from "../../../components/Transition";
+import { formYup } from "../../validations/Other Validations";
+import { IProposals } from "../../interfaces/context";
 
 export const ModalContractorProposal = ({ idProposal }: any) => {
   const [user, setUser] = useState<any>({});
+  const { openModal, setUpdate } = useContext(UserContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IProposals>({ resolver: yupResolver(formYup) });
 
   const getUser = async () => {
     const idUser = localStorage.getItem("@rentalId");
@@ -28,18 +35,6 @@ export const ModalContractorProposal = ({ idProposal }: any) => {
   useEffect(() => {
     getUser();
   }, []);
-
-  const { openModal, setUpdate } = useContext(UserContext);
-
-  const formYup = yup.object().shape({
-    description: yup.string().required("Por favor, avalie nossa colaboradora!"),
-  });
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IProposals>({ resolver: yupResolver(formYup) });
 
   const registerSubmit = async (data: IProposals) => {
     setUpdate(true);

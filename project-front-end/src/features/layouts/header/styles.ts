@@ -12,17 +12,17 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  animation: fadeInDown 1.5s;
   img {
     width: 8rem;
   }
 `;
 
-export const GoToRegister = styled.div`
+export const DivSecundaria = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
   height: 5rem;
+
   a {
     background-color: var(--white-color);
     color: var(--primary-color);

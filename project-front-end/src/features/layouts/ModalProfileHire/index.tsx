@@ -1,6 +1,6 @@
 import * as S from "./styles";
-import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Button } from "../../../components/Buttons";
 import { ModalStyled } from "../../../components/Modal/styles";
@@ -8,19 +8,7 @@ import { ErrorToast, SucessToast } from "../../libs/toastify";
 import { api } from "../../services/axios";
 import { ModalProfileHireSchema } from "../../validations/Other Validations";
 import { Transition } from "../../../components/Transition";
-
-interface ISendPropose {
-  title: string;
-  description: string;
-  userId: number;
-  is_active: string;
-  user: {
-    avatar_img: string;
-    contractorName: string;
-    contact: string;
-    contractorId: number;
-  };
-}
+import { ISendPropose } from "../../interfaces/layouts";
 
 export const ModalProfileHire = ({
   isModal,

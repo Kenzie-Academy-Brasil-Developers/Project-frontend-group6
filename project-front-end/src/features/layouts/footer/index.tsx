@@ -1,16 +1,8 @@
-import { Autocomplete, Avatar, TextField } from "@mui/material";
+import { Avatar } from "@mui/material";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { FooterContainer } from "./styles";
 import logoFooter from "../../../assets/logoWhite.svg";
-import { motion } from "framer-motion";
-
-interface IEquip {
-  id: number;
-  nome: string;
-  img: string;
-  linkedin: string;
-  github: string;
-}
+import { IEquip } from "../../interfaces/layouts";
 
 export const Footer = () => {
   const EquipProject: Array<IEquip> = [

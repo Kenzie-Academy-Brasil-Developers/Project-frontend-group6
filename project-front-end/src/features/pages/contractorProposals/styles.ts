@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledContractorProposals = styled.main`
   max-width: 100%;
+  height: 775px;
   margin: 0 auto;
   padding: 0 1rem;
   display: flex;
@@ -98,7 +99,7 @@ export const StyledMessage = styled.h3`
   font-weight: 700;
   font-size: 18px;
   color: #808080;
-`
+`;
 
 export const StyledTitleProposal = styled.h3`
   font-weight: 700;

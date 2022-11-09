@@ -29,3 +29,7 @@ export const ModalProfileHireSchema = yup.object({
   title: yup.string().required("O campo de nome é obrigatório"),
   description: yup.string().required("O campo de descrição é obrigatório"),
 });
+
+export const formYup = yup.object().shape({
+  description: yup.string().required("Por favor, avalie nossa colaboradora!"),
+});

@@ -1,8 +1,6 @@
 import axios from "axios";
 import { api } from "../../services/axios";
 import { Button } from "../../../components/Buttons";
-import { UseRentalContext } from "../../../context/RentalContext";
-import { UserContext } from "../../../context/UserContext";
 import { ModalProfileHire } from "../ModalProfileHire";
 import { ProfileHireStyle, TitlePage } from "./styles";
 import { useEffect, useState } from "react";
@@ -10,25 +8,11 @@ import { Link } from "react-router-dom";
 import { ErrorToast } from "../../libs/toastify";
 import { Avatar } from "@mui/material";
 import { Container } from "../../styles/container";
-
-interface IHiredUser {
-  name: string;
-  email: string;
-  services: [];
-  avatar_img: string;
-  description: string;
-  id: number;
-  is_active: string;
-  user: {
-    contractorId: number;
-    username: string;
-    avatar_img: string;
-  };
-  recomendation: string;
-}
+import { IHiredUser } from "../../interfaces/layouts";
+import { UseRentalContext } from "../../../context/RentalContext";
 
 export const ContractHireP = () => {
-  const [hiredUser, setHiredUser] = useState<IHiredUser>({} as IHiredUser);
+  const { hiredUser, setHiredUser } = UseRentalContext();
 
   const [contractorUser, setContractorUser] = useState<IHiredUser>(
     {} as IHiredUser
@@ -56,7 +40,9 @@ export const ContractHireP = () => {
     const token = localStorage.getItem("@rentalToken");
     try {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
-      const { data } = await api.get("/proposals?userId=10&is_active=Concluido");
+      const { data } = await api.get(
+        "/proposals?userId=10&is_active=Concluido"
+      );
       setProposalsHired(data);
     } catch (error) {
       if (axios.isAxiosError(error)) {

@@ -4,15 +4,7 @@ import { api } from "../../services/axios";
 import { useEffect, useState } from "react";
 import { Autocomplete, Avatar, TextField } from "@mui/material";
 import { NoWorkers } from "../NoWorkers";
-
-interface IDataWorker {
-  id: number;
-  avatar_img: string;
-  name: string;
-  description: string;
-  location: string;
-  services: Array<string>;
-}
+import { IDataWorker } from "../../interfaces/layouts";
 
 export const ContractDash = () => {
   const [isModal, setIsModal] = useState(false);
@@ -24,15 +16,15 @@ export const ContractDash = () => {
   const [isFiltered, setIsFiltered] = useState(false);
 
   useEffect(() => {
-    async function loadWorkers() {
+    const getWorkers = async () => {
       try {
         const { data } = await api.get("/users?is_hired=true");
         setWorkerData(data);
       } catch (error) {
         console.error(error);
       }
-    }
-    loadWorkers();
+    };
+    getWorkers();
   }, []);
 
   const createCard = (el: any) => (
@@ -44,7 +36,11 @@ export const ContractDash = () => {
       />
 
       <h2>{el.name}</h2>
-      <p>{el.description}</p>
+      {el.description ? (
+        <p>{el.description}</p>
+      ) : (
+        <p>Ainda não possui uma descricão</p>
+      )}
       <Button
         type="button"
         variant="terciary"
@@ -53,10 +49,8 @@ export const ContractDash = () => {
         Abrir
       </Button>
     </li>
-  ); 
+  );
 
-  const allWorkers = workerData.map((el) => createCard(el));
-  const filteredWorkers = fLocations.map((el) => createCard(el));
   const updatedFilteredList = (service: any, location: any) => {
     const updatedServices = service
       ? workerData.filter(
@@ -66,14 +60,28 @@ export const ContractDash = () => {
 
     const updatedLocations = location
       ? updatedServices.filter((el) => el.location === location)
-      : updatedServices;  
-    setFLocations(updatedLocations);    
+      : updatedServices;
+    setFLocations(updatedLocations);
   };
 
-  const locationsWorkers = workerData.map((el) => el.location);
+  const allWorkers = workerData.map((el) => createCard(el));
+  const filteredWorkers = fLocations.map((el) => createCard(el));
+
+  const locationsWorkers = workerData
+    .map((el) => el.location)
+    .filter((elem) => elem !== undefined && elem !== "");
+  const servicesWorkers = workerData
+    .map((el) => el.services.join(" ").split(" "))
+    .filter((elem) => elem !== undefined);
+
   const locations = Array.from(new Set(locationsWorkers));
-  const servicesWorkers = workerData.map((el) => el.services.join(""));
-  const services = Array.from(new Set(servicesWorkers));
+  const services = Array.from(
+    new Set(
+      servicesWorkers
+        .reduce((list, sub) => list.concat(sub), [])
+        .filter((elem) => elem !== "")
+    )
+  );
 
   return (
     <S.StyledDash>
@@ -106,7 +114,15 @@ export const ContractDash = () => {
           />
         </div>
       </div>
-      <ul>{!isFiltered ? allWorkers : !fLocations.length ? <NoWorkers/> : filteredWorkers }</ul>
+      <ul>
+        {!isFiltered ? (
+          allWorkers
+        ) : !fLocations.length ? (
+          <NoWorkers />
+        ) : (
+          filteredWorkers
+        )}
+      </ul>
     </S.StyledDash>
   );
 };

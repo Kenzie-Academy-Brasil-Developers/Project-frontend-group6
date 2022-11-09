@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledDash = styled.div`
   max-width: 1200px;
+  height: 750px;
   margin: 0 auto;
   padding: 0 1rem;
 
@@ -10,6 +11,10 @@ export const StyledDash = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    h2 {
+      color: var(--primary-color);
+    }
 
     @media (min-width: 460px) {
       margin: 2rem 0;
@@ -37,6 +42,7 @@ export const StyledDash = styled.div`
     gap: 2rem;
     height: 752px;
     overflow-y: auto;
+
     li {
       padding: 1rem;
       width: 100%;
@@ -48,13 +54,22 @@ export const StyledDash = styled.div`
       gap: 1.4rem;
       height: max-content;
 
-      p {
+      h2 {
         text-align: center;
         max-width: 14rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         height: 30px;
+      }
+
+      p {
+        text-align: center;
+        max-width: 14rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 40px;
       }
     }
   }

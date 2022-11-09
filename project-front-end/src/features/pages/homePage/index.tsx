@@ -10,6 +10,7 @@ import { Transition } from "../../../components/Transition";
 import { IDataWorker } from "../../interfaces/layouts";
 import { Autocomplete, Avatar, TextField } from "@mui/material";
 import { NoWorkers } from "../../layouts/NoWorkers";
+import { Container } from "../../styles/container";
 
 export const HomePage = () => {
   const [isModal, setIsModal] = useState(false);
@@ -94,46 +95,50 @@ export const HomePage = () => {
         <Link to="/register">Cadastrar</Link>
       </Header>
       <Transition>
-        <S.StyledHome>
-          <div className="topMenu">
-            <h2 className="homeTitle">Encontre aqui as opções mais seguras</h2>
-            <div className="filterWorker">
-              <Autocomplete
-                onChange={(event: any) => {
-                  setOptServices(event.target.textContent);
-                  updatedFilteredList(event.target.textContent, optLocations);
-                  setIsFiltered(true);
-                }}
-                options={services}
-                sx={{ width: 180 }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Tipo de serviço" />
-                )}
-              />
-              <Autocomplete
-                onChange={(event: any) => {
-                  setOptLocations(event.target.textContent);
-                  updatedFilteredList(optServices, event.target.textContent);
-                  setIsFiltered(true);
-                }}
-                options={locations}
-                sx={{ width: 180 }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Localização" />
-                )}
-              />
+        <Container>
+          <S.StyledHome>
+            <div className="topMenu">
+              <h2 className="homeTitle">
+                Encontre aqui as opções mais seguras
+              </h2>
+              <div className="filterWorker">
+                <Autocomplete
+                  onChange={(event: any) => {
+                    setOptServices(event.target.textContent);
+                    updatedFilteredList(event.target.textContent, optLocations);
+                    setIsFiltered(true);
+                  }}
+                  options={services}
+                  sx={{ width: 180 }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Tipo de serviço" />
+                  )}
+                />
+                <Autocomplete
+                  onChange={(event: any) => {
+                    setOptLocations(event.target.textContent);
+                    updatedFilteredList(optServices, event.target.textContent);
+                    setIsFiltered(true);
+                  }}
+                  options={locations}
+                  sx={{ width: 180 }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Localização" />
+                  )}
+                />
+              </div>
             </div>
-          </div>
-          <ul>
-            {!isFiltered ? (
-              allWorkers
-            ) : !fLocations.length ? (
-              <NoWorkers />
-            ) : (
-              filteredWorkers
-            )}
-          </ul>
-        </S.StyledHome>
+            <ul>
+              {!isFiltered ? (
+                allWorkers
+              ) : !fLocations.length ? (
+                <NoWorkers />
+              ) : (
+                filteredWorkers
+              )}
+            </ul>
+          </S.StyledHome>
+        </Container>
       </Transition>
       <Footer></Footer>
 

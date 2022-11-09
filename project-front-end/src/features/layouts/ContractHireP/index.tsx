@@ -26,7 +26,7 @@ export const ContractHireP = () => {
     const token = localStorage.getItem("@rentalToken");
     try {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
-      const { data } = await api.get(`/users/10`);
+      const { data } = await api.get(`/users/3`);
       setHiredUser(data);
       setLoading(true);
     } catch (error) {
@@ -40,9 +40,7 @@ export const ContractHireP = () => {
     const token = localStorage.getItem("@rentalToken");
     try {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
-      const { data } = await api.get(
-        "/proposals?userId=10&is_active=Concluido"
-      );
+      const { data } = await api.get("/proposals?userId=3&is_active=Concluido");
       setProposalsHired(data);
     } catch (error) {
       if (axios.isAxiosError(error)) {

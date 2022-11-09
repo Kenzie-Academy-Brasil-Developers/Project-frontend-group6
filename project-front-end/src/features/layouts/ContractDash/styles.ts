@@ -4,7 +4,6 @@ export const StyledDash = styled.div`
   max-width: 1200px;
   height: 750px;
   margin: 0 auto;
-  padding: 0 1rem;
 
   .topMenu {
     margin: 1rem 0;
@@ -76,7 +75,7 @@ export const StyledDash = styled.div`
 
   @media (min-width: 460px) {
     ul {
-      width: 1200px;
+      width: 100%;
       li {
         width: 16rem;
       }

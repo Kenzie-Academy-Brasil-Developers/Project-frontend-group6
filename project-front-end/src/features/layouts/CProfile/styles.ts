@@ -6,9 +6,11 @@ export const CProfileStyled = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 25px;
 
   background-color: var(--grey1-color);
-
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
   padding: 2rem;
 
   border-radius: 8px;

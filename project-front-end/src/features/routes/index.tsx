@@ -31,8 +31,6 @@ export const RoutesMain = () => {
               ></Route>
               <Route path="/dashboard" element={<Dashboard />}></Route>
               <Route path="/profile" element={<Profile />}></Route>
-              <Route path="/dashboard" element={<Dashboard />}></Route>
-              <Route path="/profile" element={<Profile />}></Route>
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
               <Route path="/home" element={<HomePage />} />

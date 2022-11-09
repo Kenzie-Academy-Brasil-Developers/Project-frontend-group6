@@ -1,4 +1,5 @@
 import { useContext, createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IChildren } from "../../features/interfaces/children";
 import { IHiredUser } from "../../features/interfaces/layouts";
 import { IHiredProfile } from "../../features/interfaces/profile";
@@ -18,6 +19,7 @@ export const RentalContext = createContext<IRentalContext>(
 );
 
 export const RentalProvider = ({ children }: IChildren) => {
+  const navigate = useNavigate();
   const idUser = localStorage.getItem("@rentalId");
   const tokenUser = localStorage.getItem("@rentalToken");
 
@@ -29,6 +31,9 @@ export const RentalProvider = ({ children }: IChildren) => {
       const { data } = await api.get<IHiredProfile>(`/users/${idUser}`);
       setUser(data);
     } catch (error) {
+      localStorage.removeItem("@rentalToken");
+      localStorage.removeItem("@rentalId");
+      navigate("/login");
       console.error(error);
     }
   };
@@ -44,9 +49,9 @@ export const RentalProvider = ({ children }: IChildren) => {
 
   const getProposals = async () => {};
 
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <RentalContext.Provider

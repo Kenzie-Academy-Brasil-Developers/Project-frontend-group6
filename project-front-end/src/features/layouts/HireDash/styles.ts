@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface IProps {
+  filtred : string;
+}
+
 export const DashStyled = styled.main`
   display: flex;
   justify-content: space-between;
@@ -11,9 +15,13 @@ export const DashStyled = styled.main`
     align-items: center;
     gap: 2rem;
   }
+
+  #textNone{
+    color: var(--grey3-color)
+  }
 `;
 
-export const ProposalStyled = styled.section`
+export const ProposalStyled = styled.section<IProps>`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -22,11 +30,44 @@ export const ProposalStyled = styled.section`
     width: 100%;
   }
 
-  & > h2 {
-    font-size: 36px;
-    font-weight: bold;
-    color: var(--primary-color);
+  .HeaderProposes{
+    display: flex;
+    justify-content: space-between;
+
+    @media(max-width : 450px){
+      flex-direction: column;
+    }
+
+    .BoxButtons{
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 5px;
+      
+      > button {
+        padding: 5px 10px;
+        border-radius: 8px;
+      }
+
+      >button:nth-child(1){
+        background-color: ${props => props.filtred === "Enviado" && "var(--primary-color)"};
+        color: ${props => props.filtred === "Enviado" && "var(--white-color)"};
+      }
+
+      >button:nth-child(2){
+        background-color: ${props => props.filtred === "Em andamento" && "var(--primary-color)"};
+        color: ${props => props.filtred === "Em andamento" && "var(--white-color)"}
+      }
+    }
+    & > h2 {
+      font-size: 36px;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
   }
+
+
 
   & > ul {
     display: flex;
@@ -78,6 +119,7 @@ export const ProposalStyled = styled.section`
         & > img {
           width: 102px;
           height: 102px;
+          border-radius: 50%;
         }
       }
 
@@ -208,7 +250,8 @@ export const FProposalStyled = styled.section`
 
       border-radius: 8px;
 
-      height: 330px;
+      max-height: 330px;
+      height: 200px;
       width: 100%;
 
       position: relative;
@@ -224,6 +267,7 @@ export const FProposalStyled = styled.section`
         & > img {
           width: 102px;
           height: 102px;
+          border-radius: 50%;
         }
       }
 
@@ -241,7 +285,7 @@ export const FProposalStyled = styled.section`
           font-size: 16px;
           font-weight: 400;
           color: var(--black-color);
-          height: 16%;
+          height: 40px;
           overflow-y: overlay;
 
           ::-webkit-scrollbar {
@@ -267,6 +311,10 @@ export const FProposalStyled = styled.section`
           color: var(--black-color);
           height: 60%;
           overflow-y: overlay;
+
+          @media(max-width: 970px){
+            max-height: 150px;
+          }
 
           ::-webkit-scrollbar {
             width: 10px;
@@ -303,4 +351,6 @@ export const FProposalStyled = styled.section`
       border: 2px solid var(--grey1-color);
     }
   }
+
+
 `;

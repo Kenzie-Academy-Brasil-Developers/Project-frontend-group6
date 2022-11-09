@@ -1,13 +1,12 @@
-import { Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { RentalProvider } from "../../../context/RentalContext";
+import { ContractorProposals } from "../../pages/contractorProposals";
 import { Dashboard } from "../../pages/dashboard";
 import { Profile } from "../../pages/profile";
+import { HiredDetails } from "../../pages/workerDetails";
 
-export const ProtectedRoutes = () => {
-  return (
-    <RentalProvider>
-      <Route path="/dashboard" element={<Dashboard />}></Route>
-      <Route path="/profile" element={<Profile />}></Route>
-    </RentalProvider>
-  );
-};
+// export const ProtectedRoutes = () => {
+//   return (
+
+//   );
+// };

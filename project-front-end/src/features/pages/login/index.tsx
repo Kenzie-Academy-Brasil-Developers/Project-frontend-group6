@@ -7,9 +7,9 @@ import { FormStructure } from "../../layouts/Form";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormSchemaLogin } from "../../validations/Auth";
-import { StatePassword, StateTypePassword } from "../register";
+import { StatePassword } from "../register";
 import { CampPassword } from "./../register/styles";
-import { IDataUser, IRegister } from "../../interfaces/auth";
+import { IRegister } from "../../interfaces/auth";
 import { UseUserContext } from "../../../context/UserContext";
 import { Transition } from "../../../components/Transition";
 
@@ -18,9 +18,7 @@ export const Login = () => {
     useState<HTMLInputTypeAttribute>("password");
   const [passwordIconStatus, setPasswordIconStatus] =
     useState<StatePassword>(false);
-
   const { loginUser } = UseUserContext();
-
   const {
     register,
     handleSubmit,
@@ -28,7 +26,6 @@ export const Login = () => {
   } = useForm<IRegister>({
     resolver: yupResolver(FormSchemaLogin),
   });
-
   const toogleIconPassword = () => {
     setPasswordIconStatus((value) => !value);
     typeInput === "password" ? setTypeInput("text") : setTypeInput("password");

@@ -1,5 +1,5 @@
 export interface IRegister {
-  radioGroup?: string;
+  radioGroup?: boolean;
   confirm_password?: string;
   name?: string;
   email: string;

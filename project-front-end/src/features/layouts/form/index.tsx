@@ -1,11 +1,6 @@
 import * as S from "./styles";
 import logo from "/src/assets/logoForm.svg";
-import { IChildren } from "../../interfaces/children";
-
-interface IForm extends IChildren {
-  title: string;
-  maxWidth: number;
-}
+import { IForm } from "../../interfaces/layouts";
 
 export const FormStructure = ({ title, maxWidth, children }: IForm) => {
   return (

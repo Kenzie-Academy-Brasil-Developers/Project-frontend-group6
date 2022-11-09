@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const DashStyled = styled.main`
   display: flex;
   justify-content: space-between;
+  height: 775px;
 
   @media (max-width: 975px) {
     flex-direction: column;

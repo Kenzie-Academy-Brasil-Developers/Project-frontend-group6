@@ -21,7 +21,7 @@ export const Header = ({ children }: IChildren) => {
         <Link to="/dashboard">
           <img src={logo} alt="Logo" />
         </Link>
-        <S.GoToRegister>
+        <S.DivSecundaria>
           <motion.div
             className="switch"
             data-ison={isOn}
@@ -30,7 +30,7 @@ export const Header = ({ children }: IChildren) => {
             <motion.div className="handle" layout transition={spring} />
           </motion.div>
           {children}
-        </S.GoToRegister>
+        </S.DivSecundaria>
       </S.Container>
     </S.StyledHeader>
   );

@@ -24,7 +24,6 @@ export const FooterContainer = styled.div`
     justify-content: space-between;
     padding: 1rem 4rem;
     width: 100%;
-    animation: fadeInUp 1.5s;
 
     @media (max-width: 730px) {
       flex-direction: column;
@@ -55,11 +54,15 @@ export const FooterContainer = styled.div`
     @media (max-width: 380px) {
       flex-direction: column;
       gap: 0;
+
+      ul {
+        height: 90%;
+      }
     }
   }
 
   .secondList {
-    height: 160px;
+    height: 220px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

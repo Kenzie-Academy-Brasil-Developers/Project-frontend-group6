@@ -2,25 +2,26 @@ import * as S from "./styles";
 import { useEffect, useState } from "react";
 import { Loading } from "../../../components/Loading";
 import { api } from "../../services/axios";
+import { UseRentalContext } from "../../../context/RentalContext";
+import { IProposals } from "../../interfaces/context";
 
 export const HireDash = () => {
+  const { idUser, tokenUser } = UseRentalContext();
   const [proposals, setProposals] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const filterProposals = (status: string) => {
-    const filter = proposals.filter((elem: any) => elem.is_active == status);
+    const filter = proposals.filter(
+      (elem: IProposals) => elem.is_active == status
+    );
     return filter;
   };
 
   useEffect(() => {
     const getMyProposals = async () => {
-      const userId = localStorage.getItem("@rentalId");
-      const token = localStorage.getItem("@rentalToken");
-
       try {
-        api.defaults.headers.common.authorization = `Bearer ${token}`;
-
-        const { data } = await api.get(`/proposals?userId=${userId}`);
+        api.defaults.headers.common.authorization = `Bearer ${tokenUser}`;
+        const { data } = await api.get(`/proposals?userId=${idUser}`);
         setProposals(data);
         setIsLoading(false);
       } catch (error) {

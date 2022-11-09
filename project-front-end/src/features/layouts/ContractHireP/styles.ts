@@ -9,7 +9,7 @@ const subTitle = css`
 export const TitlePage = styled.h2`
   color: var(--primary-color);
   margin: 10px 0;
-`
+`;
 
 export const ProfileHireStyle = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ export const ProfileHireStyle = styled.div`
   width: 100%;
   background-color: var(--grey1-color);
   border-radius: 12px;
-  padding: 50px;
+  padding: 16px;
 
   .HeaderContent {
     display: flex;
@@ -45,9 +45,20 @@ export const ProfileHireStyle = styled.div`
       > img {
         width: 250px;
       }
+      > div {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
 
-      > h3 {
-        font-size: 36px;
+        > h3 {
+          font-size: 36px;
+        }
+        > span {
+          font-size: 24px;
+          font-weight: 400;
+          color: var(--black-color);
+          margin-bottom: 10px;
+        }
       }
     }
 
@@ -122,7 +133,7 @@ export const ProfileHireStyle = styled.div`
       padding: 2rem;
       border-radius: 8px;
 
-      @media(max-width: 600px){
+      @media (max-width: 600px) {
         overflow: auto;
         height: 145px;
       }
@@ -159,13 +170,13 @@ export const ProfileHireStyle = styled.div`
           gap: 1rem;
           border-radius: 8px;
           position: relative;
-          
-          >h4{
+
+          > h4 {
             position: absolute;
             top: 25px;
             left: 75px;
 
-            @media(max-width: 600px){
+            @media (max-width: 600px) {
               width: 95px;
               white-space: nowrap;
               overflow: hidden;
@@ -173,7 +184,6 @@ export const ProfileHireStyle = styled.div`
             }
           }
         }
-
 
         > h2 {
           height: 100%;

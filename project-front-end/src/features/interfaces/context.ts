@@ -4,10 +4,8 @@ export interface IUserContext {
   loginUser: (dataUser: IRegister) => Promise<void>;
   submitRegister: (data: IRegister) => void;
   openModal: () => void;
-  setProposals: React.Dispatch<React.SetStateAction<IProposals[]>>;
   setUpdate: React.Dispatch<React.SetStateAction<boolean>>;
   modal: boolean;
-  proposals: IProposals[];
   update: boolean;
 }
 

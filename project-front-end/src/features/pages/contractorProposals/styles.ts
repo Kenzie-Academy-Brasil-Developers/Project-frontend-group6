@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const StyledContractorProposals = styled.main`
-  max-width: 100%;
+  width: 100%;
   height: 775px;
   margin: 0 auto;
-  padding: 0 1rem;
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
   align-items: center;
   flex-direction: column;
 `;
@@ -65,7 +64,7 @@ export const StyledItemContractorProposals = styled.li`
   flex-direction: column;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
   margin: 20px 0;
-  padding: 1.5rem 1.5rem;
+  padding: 1rem;
   align-items: flex-end;
 
   @media (max-width: 600px) {
@@ -111,6 +110,26 @@ export const StyledDescriptionProposal = styled.p`
   font-weight: 400;
   font-size: 14px;
   color: var(--black-color);
+
+  height: 100px;
+  overflow-y: overlay;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+
+    :hover {
+      background-color: var(--primary-color);
+    }
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
 `;
 
 export const StyledDivStatus = styled.div`

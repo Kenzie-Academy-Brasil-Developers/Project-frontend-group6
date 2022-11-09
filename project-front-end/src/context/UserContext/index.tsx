@@ -8,7 +8,7 @@ import {
 import { IChildren } from "../../features/interfaces/children";
 import { api } from "../../features/services/axios";
 import { toast } from "react-toastify";
-import { IProposals, IUserContext } from "../../features/interfaces/context";
+import { IUserContext } from "../../features/interfaces/context";
 
 export const UserContext = createContext<IUserContext>({} as IUserContext);
 
@@ -16,7 +16,6 @@ export const UserProvider = ({ children }: IChildren) => {
   const navigate = useNavigate();
   const [modal, setModal] = useState<boolean>(false);
   const [update, setUpdate] = useState<boolean>(false);
-  const [proposals, setProposals] = useState<IProposals[]>([]);
 
   const loginUser = async (dataUser: IRegister) => {
     try {
@@ -76,8 +75,6 @@ export const UserProvider = ({ children }: IChildren) => {
         loginUser,
         modal,
         openModal,
-        proposals,
-        setProposals,
         update,
         setUpdate,
       }}

@@ -14,11 +14,12 @@ export interface IHiredUser {
   services: [];
   avatar_img: string;
   description: string;
+  location: string;
   id: number;
   is_active: string;
   user: {
     contractorId: number;
-    username: string;
+    contractorName: string;
     avatar_img: string;
   };
   recomendation: string;

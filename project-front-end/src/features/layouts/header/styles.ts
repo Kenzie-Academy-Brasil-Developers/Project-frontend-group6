@@ -3,6 +3,7 @@ import darkMode from "/src/assets/darkMode.png";
 
 export const StyledHeader = styled.header`
   background-color: var(--primary-color);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 export const Container = styled.div`

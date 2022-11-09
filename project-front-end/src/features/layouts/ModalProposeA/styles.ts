@@ -6,6 +6,7 @@ export const ModalProposeStyle = styled.div`
    width: 100%;
    max-width: 700px;
    border-radius: 8px;
+   
 
    > div:nth-child(1) {
 

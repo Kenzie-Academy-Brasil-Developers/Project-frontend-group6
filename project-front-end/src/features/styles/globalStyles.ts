@@ -32,7 +32,7 @@ body{
 
     background: ${(props) => props.theme.colors.background};
     
-    overflow-y: overlay;
+    overflow: overlay;
 
     ::-webkit-scrollbar {
     width: 10px;

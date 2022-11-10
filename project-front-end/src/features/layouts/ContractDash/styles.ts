@@ -64,7 +64,24 @@ export const StyledDash = styled.div`
     flex-wrap: wrap;
     gap: 2rem;
     height: 755px;
-    overflow-y: auto;
+    overflow-y: overlay;
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: transparent;
+
+      :hover {
+        background-color: var(--primary-color);
+      }
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
 
     li {
       padding: 1rem;

@@ -9,6 +9,7 @@ O projeto prevê que a cliente tenha uma segurança maior no momento de contrata
 Apesar de ser um site voltado para as mulheres, não há oposições para o cadastro, até por priorizar a segurança e acarretar renda extra aos trabalhadores da área. A prioridade do Rental Wife é disponibilizar um momento pacífico e controlado, gerindo tensões e incômodos antes que estes ocorram.
 
 Autores:
+
 TL - [Mário Lucas](https://github.com/mariolucass)
 
 SM - [Danilo Cardoso](https://github.com/DaniloCardoso93)
@@ -23,39 +24,71 @@ QA - [Alfredo Fontinele](https://github.com/Alfredo-Fontinele)
 
 QA - [Sidnei Alves](https://github.com/dexter2k8/)
 
-Funcionalidades:
-Temas dark e light
-Preview em tempo real
-Modo tela cheia
-Multiplataforma
-Apêndice
-Coloque qualquer informação adicional aqui
 
-Tecnologias:
+Funcionalidades:
+
+Temas dark e light
+
+Preview em tempo real
+
+Modo tela cheia
+
+Multiplataforma
+
+Apêndice
+
+Enviar solicatação de contratação
+
+Aceitar/Recusar solicitação de contratação
+
+Concluir e Avaliar o serviço prestado
+
 O projeto foi realizado utilizando as tecnologias:
+
 1- Axios
+
 2- React Dom
+
 3- Hook Form
+
 4- Yup
+
 5- TypeScript
+
 6- React Router Dom
+
 7- React Icons
+
 8- Styled Components
+
 9- Framer Motion
+
 10- React Toastify
+
 11- MUI
+
 12- React Spinner
+
+13- AnimateCss
+
 
 Outras ferramentas utilizadas:
 
 1 - [Trello](https://trello.com/b/2nQZbSbc/projeto)
+
 2 - [JSON Server](https://github.com/Kenzie-Academy-Brasil-Developers/api-project-front-end)
+
 3 - [linktr.ee](https://linktr.ee/daniloacardoso)
+
 4 - [Herokuapp](https://rental-wife.herokuapp.com/)
+
 5 - [Vercel](https://rental-wife-blue.vercel.app/)
+
 6 - [Figma](https://www.figma.com/file/joCi1q3T60dxbVvd5c7oSn/Untitled?node-id=0%3A1)
 
+
 Complexidade:
+
 8/10
 
 ## Documentação de cores

@@ -1,5 +1,6 @@
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { DefaultTheme } from "styled-components";
 import { RentalProvider } from "../../context/RentalContext";
 import { UserProvider } from "../../context/UserContext";
 import { ContractorProposals } from "../pages/contractorProposals";
@@ -12,12 +13,17 @@ import { Register } from "../pages/register";
 import { HiredDetails } from "../pages/workerDetails";
 // import { ProtectedRoutes } from "./protected";
 
-export const RoutesMain = () => {
+interface IProps {
+  toggleTheme(): void;
+  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
+}
+
+export const RoutesMain = ({ toggleTheme, setTheme }: IProps) => {
   const location = useLocation();
 
   return (
     <>
-      <UserProvider>
+      <UserProvider toggleTheme={toggleTheme} setTheme={setTheme}>
         <RentalProvider>
           <AnimatePresence exitBeforeEnter>
             <Routes key={location.pathname} location={location}>

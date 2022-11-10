@@ -7,7 +7,7 @@ const subTitle = css`
 `;
 
 export const TitlePage = styled.h2`
-  color: var(--primary-color);
+  color: ${(props) => props.theme.colors.text};
   margin: 10px 0;
 `;
 
@@ -16,7 +16,7 @@ export const ProfileHireStyle = styled.div`
   flex-direction: column;
   gap: 2rem;
   width: 100%;
-  background-color: var(--grey1-color);
+  background-color: ${(props) => props.theme.colors.grey1};
   border-radius: 12px;
   padding: 16px;
 
@@ -52,11 +52,12 @@ export const ProfileHireStyle = styled.div`
 
         > h3 {
           font-size: 36px;
+          color: ${(props) => props.theme.colors.text};
         }
         > span {
           font-size: 24px;
           font-weight: 400;
-          color: var(--black-color);
+          color: ${(props) => props.theme.colors.text};
           margin-bottom: 10px;
         }
       }
@@ -72,6 +73,7 @@ export const ProfileHireStyle = styled.div`
 
       > p {
         ${subTitle}
+        color:${(props) => props.theme.colors.text};
       }
 
       > ul {
@@ -117,8 +119,8 @@ export const ProfileHireStyle = styled.div`
 
     :hover {
       transition: 0.5s;
-
-      background-color: transparent;
+      color: var(--white-color);
+      background-color: var(--primary-color);
       border: 2px solid var(--white-color);
     }
   }
@@ -126,6 +128,7 @@ export const ProfileHireStyle = styled.div`
   .boxDescription {
     > p {
       ${subTitle}
+      color: ${(props) => props.theme.colors.text};
     }
 
     > div {
@@ -148,6 +151,7 @@ export const ProfileHireStyle = styled.div`
   .boxRatings {
     > p {
       ${subTitle}
+      color: ${(props) => props.theme.colors.text};
     }
 
     > div {

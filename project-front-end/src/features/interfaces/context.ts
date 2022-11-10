@@ -1,3 +1,4 @@
+import { DefaultTheme } from "styled-components";
 import { IRegister } from "./auth";
 
 export interface IUserContext {
@@ -7,6 +8,8 @@ export interface IUserContext {
   setUpdate: React.Dispatch<React.SetStateAction<boolean>>;
   modal: boolean;
   update: boolean;
+  toggleTheme(): void;
+  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
 }
 
 export interface IProposals {

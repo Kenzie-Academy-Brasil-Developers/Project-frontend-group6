@@ -33,7 +33,7 @@ const typeButton = {
     :hover {
       transition: 0.5s;
 
-      background-color: transparent;
+      background-color: var(--white-color);
       border: 2px solid var(--primary-color);
       color: var(--primary-color);
     }
@@ -50,7 +50,7 @@ const typeButton = {
     :hover {
       transition: 0.5s;
 
-      background-color: transparent;
+      background-color: var(--white-color);
       border: 2px solid var(--primary-color);
       color: var(--primary-color);
     }

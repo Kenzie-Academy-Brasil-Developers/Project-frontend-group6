@@ -28,6 +28,9 @@ export const GlobalStyle = createGlobalStyle`
 body{
     width: 100%;
     height: 100vh;
+    transition: .5s;
+
+    background: ${(props) => props.theme.colors.background};
     
     overflow-y: overlay;
 
@@ -52,5 +55,4 @@ body{
 svg, button{
     cursor:pointer;
 }
-
 `;

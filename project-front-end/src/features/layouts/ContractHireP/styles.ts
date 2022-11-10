@@ -86,6 +86,25 @@ export const ProfileHireStyle = styled.div`
         overflow-x: auto;
         align-items: center;
 
+        overflow-x: overlay;
+
+        ::-webkit-scrollbar {
+          width: 10px;
+          height: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: transparent;
+
+          :hover {
+            background-color: var(--primary-color);
+          }
+        }
+
+        ::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
         > li {
           width: fit-content;
           height: fit-content;
@@ -163,7 +182,24 @@ export const ProfileHireStyle = styled.div`
         padding: 1rem;
         height: 150px;
         border-radius: 8px;
-        overflow-y: auto;
+        overflow-y: overlay;
+
+        ::-webkit-scrollbar {
+          width: 10px;
+          height: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: transparent;
+
+          :hover {
+            background-color: var(--primary-color);
+          }
+        }
+
+        ::-webkit-scrollbar-track {
+          background: transparent;
+        }
 
         > li {
           background-color: var(--grey1-color);

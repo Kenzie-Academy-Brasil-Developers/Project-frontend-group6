@@ -100,7 +100,11 @@ export const ContractDash = () => {
             options={services}
             sx={{ width: 180 }}
             renderInput={(params) => (
-              <TextField {...params} label="Tipo de serviço" />
+              <TextField
+                {...params}
+                label="Tipo de serviço"
+                color="secondary"
+              />
             )}
           />
           <Autocomplete
@@ -112,7 +116,7 @@ export const ContractDash = () => {
             options={locations}
             sx={{ width: 180 }}
             renderInput={(params) => (
-              <TextField {...params} label="Localização" />
+              <TextField {...params} label="Localização" color="secondary" />
             )}
           />
         </div>

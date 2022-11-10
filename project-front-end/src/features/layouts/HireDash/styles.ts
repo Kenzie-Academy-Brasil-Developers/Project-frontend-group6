@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface IProps {
-  filtred : string;
+  filtred: string;
 }
 
 export const DashStyled = styled.main`
@@ -16,8 +16,8 @@ export const DashStyled = styled.main`
     gap: 2rem;
   }
 
-  #textNone{
-    color: var(--grey3-color)
+  #textNone {
+    color: var(--grey3-color);
   }
 `;
 
@@ -30,44 +30,45 @@ export const ProposalStyled = styled.section<IProps>`
     width: 100%;
   }
 
-  .HeaderProposes{
+  .HeaderProposes {
     display: flex;
     justify-content: space-between;
 
-    @media(max-width : 450px){
+    @media (max-width: 450px) {
       flex-direction: column;
     }
 
-    .BoxButtons{
+    .BoxButtons {
       display: flex;
       justify-content: space-between;
       gap: 15px;
       margin-top: 5px;
-      
+
       > button {
         padding: 5px 10px;
         border-radius: 8px;
       }
 
-      >button:nth-child(1){
-        background-color: ${props => props.filtred === "Enviado" && "var(--primary-color)"};
-        color: ${props => props.filtred === "Enviado" && "var(--white-color)"};
+      > button:nth-child(1) {
+        background-color: ${(props) =>
+          props.filtred === "Enviado" && "var(--primary-color)"};
+        color: ${(props) =>
+          props.filtred === "Enviado" && "var(--white-color)"};
       }
 
-      >button:nth-child(2){
-        background-color: ${props => props.filtred === "Em andamento" && "var(--primary-color)"};
-        color: ${props => props.filtred === "Em andamento" && "var(--white-color)"}
+      > button:nth-child(2) {
+        background-color: ${(props) =>
+          props.filtred === "Em andamento" && "var(--primary-color)"};
+        color: ${(props) =>
+          props.filtred === "Em andamento" && "var(--white-color)"};
       }
     }
     & > h2 {
       font-size: 36px;
       font-weight: bold;
-      color: var(--primary-color);
+      color: ${(props) => props.theme.colors.text};
     }
-
   }
-
-
 
   & > ul {
     display: flex;
@@ -76,7 +77,7 @@ export const ProposalStyled = styled.section<IProps>`
 
     padding: 2rem;
 
-    background-color: var(--grey1-color);
+    background-color: ${(props) => props.theme.colors.grey1};
 
     width: 460px;
     height: 700px;
@@ -107,7 +108,7 @@ export const ProposalStyled = styled.section<IProps>`
       gap: 1rem;
       padding: 1rem;
 
-      background-color: var(--white-color);
+      background-color: ${(props) => props.theme.colors.background};
 
       border-radius: 8px;
 
@@ -127,14 +128,14 @@ export const ProposalStyled = styled.section<IProps>`
         & > h3 {
           font-size: 16px;
           font-weight: bold;
-          color: var(--primary-color);
+          color: ${(props) => props.theme.colors.text};
 
           margin-bottom: 0.3rem;
         }
         & > p {
           font-size: 16px;
           font-weight: 400;
-          color: var(--black-color);
+          color: ${(props) => props.theme.colors.span};
           height: 48%;
           overflow-y: overlay;
 
@@ -205,7 +206,7 @@ export const FProposalStyled = styled.section`
   & > h2 {
     font-size: 36px;
     font-weight: bold;
-    color: var(--primary-color);
+    color: ${(props) => props.theme.colors.text};
   }
 
   & > ul {
@@ -215,7 +216,7 @@ export const FProposalStyled = styled.section`
 
     padding: 2rem;
 
-    background-color: var(--grey1-color);
+    background-color: ${(props) => props.theme.colors.grey1};
 
     width: 680px;
     height: 700px;
@@ -246,7 +247,7 @@ export const FProposalStyled = styled.section`
       gap: 1rem;
       padding: 1rem;
 
-      background-color: var(--white-color);
+      background-color: ${(props) => props.theme.colors.background};
 
       border-radius: 8px;
 
@@ -279,12 +280,12 @@ export const FProposalStyled = styled.section`
         & > h3 {
           font-size: 16px;
           font-weight: bold;
-          color: var(--primary-color);
+          color: ${(props) => props.theme.colors.text};
         }
         & > span {
           font-size: 16px;
           font-weight: 400;
-          color: var(--black-color);
+          color: ${(props) => props.theme.colors.span};
           height: 40px;
           overflow-y: overlay;
 
@@ -308,11 +309,11 @@ export const FProposalStyled = styled.section`
         & > p {
           font-size: 16px;
           font-weight: 400;
-          color: var(--black-color);
+          color: ${(props) => props.theme.colors.span};
           height: 60%;
           overflow-y: overlay;
 
-          @media(max-width: 970px){
+          @media (max-width: 970px) {
             max-height: 150px;
           }
 
@@ -351,6 +352,4 @@ export const FProposalStyled = styled.section`
       border: 2px solid var(--grey1-color);
     }
   }
-
-
 `;

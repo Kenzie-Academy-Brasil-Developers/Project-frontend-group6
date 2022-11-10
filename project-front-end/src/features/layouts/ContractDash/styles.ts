@@ -10,8 +10,23 @@ export const StyledDash = styled.div`
     flex-direction: column;
     gap: 1rem;
 
-    h2 {
+    input,
+    span,
+    label,
+    textarea {
+      font-family: "Inter", sans-serif;
+      ::placeholder {
+        font-family: "Inter", sans-serif;
+      }
+    }
+
+    .MuiFormLabel-root {
       color: var(--primary-color);
+    }
+
+    h2 {
+      color: ${(props) => props.theme.colors.text};
+      transition: 0.5s;
     }
 
     @media (min-width: 460px) {
@@ -26,31 +41,51 @@ export const StyledDash = styled.div`
       gap: 1rem;
     }
 
+    .MuiAutocomplete-root {
+      background-color: ${(props) => props.theme.colors.grey1};
+      transition: 0.5s;
+    }
+
+    .MuiFormLabel-root {
+      color: ${(props) => props.theme.colors.span};
+    }
+
     #workerLocation {
       margin-left: 1rem;
     }
   }
 
   ul {
-    background-color: var(--grey1-color);
+    background-color: ${(props) => props.theme.colors.grey1};
+    transition: 0.5s;
     padding: 1rem;
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    height: 752px;
+    height: 755px;
     overflow-y: auto;
 
     li {
       padding: 1rem;
       width: 100%;
       border-radius: 8px;
-      background-color: var(--white-color);
+      background-color: ${(props) => props.theme.colors.background};
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1.4rem;
       height: max-content;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      transition: 0.5s;
+      color: ${(props) => props.theme.colors.span};
+
+      :hover {
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+          rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        transition: 0.5s;
+      }
 
       h2 {
         text-align: center;

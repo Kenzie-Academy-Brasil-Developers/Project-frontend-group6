@@ -52,7 +52,7 @@ export const Footer = () => {
     {
       id: 7,
       nome: "Sidnei",
-      img: "https://avatars.githubusercontent.com/u/104247636?v=4",
+      img: "https://media-exp1.licdn.com/dms/image/C4E03AQEHcwFMQtcBoQ/profile-displayphoto-shrink_800_800/0/1517368765604?e=1673481600&v=beta&t=dVCDeP-WWDuYZf3kmRSO2lob1-bLerHUuVgGR-xoWoY",
       linkedin: "https://www.linkedin.com/in/sidnei-alves-20b547a5/",
       github: "https://github.com/dexter2k8/",
     },

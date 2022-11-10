@@ -9,10 +9,16 @@ import { IChildren } from "../../features/interfaces/children";
 import { api } from "../../features/services/axios";
 import { toast } from "react-toastify";
 import { IUserContext } from "../../features/interfaces/context";
+import { DefaultTheme } from "styled-components";
 
 export const UserContext = createContext<IUserContext>({} as IUserContext);
 
-export const UserProvider = ({ children }: IChildren) => {
+interface IProps extends IChildren {
+  toggleTheme(): void;
+  setTheme: React.Dispatch<React.SetStateAction<DefaultTheme>>;
+}
+
+export const UserProvider = ({ children, toggleTheme, setTheme }: IProps) => {
   const navigate = useNavigate();
   const [modal, setModal] = useState<boolean>(false);
   const [update, setUpdate] = useState<boolean>(false);
@@ -77,6 +83,8 @@ export const UserProvider = ({ children }: IChildren) => {
         openModal,
         update,
         setUpdate,
+        toggleTheme,
+        setTheme,
       }}
     >
       {children}

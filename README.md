@@ -1,5 +1,7 @@
 Projeto Front-End - Rental Wife
 
+Link do projeto - [Rental Wife](https://rental-wife-blue.vercel.app).
+
 Rental Wife é um projeto criado pensando no bem estar feminino e na expansão do mercado de trabalho manual. Nos tempos modernos, muitas mulheres não têm tempo para se dedicarem a ter diversas habilidades, enquanto outras têm essas mesmas habilidades como fonte de renda, sendo que, o mercado de trabalho manual e braçal, muitas vezes, opta por priorizar homens nesse tipo de função, limitando as vagas femininas.
 
 O projeto prevê que a cliente tenha uma segurança maior no momento de contratação para um serviço doméstico, propondo-o a outra mulher que tenha o conhecimento necessário e que esteja devidamente avaliada na plataforma. Antes de propôr o serviço necessitado, a cliente pode entrar no perfil e ver as competências, descrição pessoal e avaliações de outros contratantes para aquela pessoa, assegurando a qualidade do serviço que lhe será prestado. Além disso, a colaboradora, ao receber a proposta, pode analisar se quer aceitar ou recusar, trazendo também a ela essa mesma segurança que a cliente já detém, podendo ocorrer até um contato prévio.
@@ -7,13 +9,19 @@ O projeto prevê que a cliente tenha uma segurança maior no momento de contrata
 Apesar de ser um site voltado para as mulheres, não há oposições para o cadastro, até por priorizar a segurança e acarretar renda extra aos trabalhadores da área. A prioridade do Rental Wife é disponibilizar um momento pacífico e controlado, gerindo tensões e incômodos antes que estes ocorram.
 
 Autores:
-TL - Mário Lucas (https://github.com/mariolucass)
-SM - Danilo Cardoso (https://github.com/DaniloCardoso93)
-PO - Juliana Diorio (https://github.com/JulianaDiorio)
-QA - Juan Sgarbi (https://github.com/JuanSgarbi)
-QA - Alexson Pereira (https://github.com/AlexsonPereira)
-QA - Alfredo Fontinele (https://github.com/Alfredo-Fontinele)
-QA - Sidnei Alves (https://github.com/dexter2k8/)
+TL - [Mário Lucas](https://github.com/mariolucass)
+
+SM - [Danilo Cardoso](https://github.com/DaniloCardoso93)
+
+PO - [Juliana Diorio](https://github.com/JulianaDiorio)
+
+QA - [Juan Sgarbi](https://github.com/JuanSgarbi)
+
+QA - [Alexson Pereira](https://github.com/AlexsonPereira)
+
+QA - [Alfredo Fontinele](https://github.com/Alfredo-Fontinele)
+
+QA - [Sidnei Alves](https://github.com/dexter2k8/)
 
 Funcionalidades:
 Temas dark e light
@@ -40,7 +48,15 @@ O projeto foi realizado utilizando as tecnologias:
 
 Outras ferramentas utilizadas:
 
-1- Trello; 2- JSON Server; 3 - linktr.ee; 4 - Herokuapp;
+1 - [Trello](https://trello.com/b/2nQZbSbc/projeto)
+2 - [JSON Server](https://github.com/Kenzie-Academy-Brasil-Developers/api-project-front-end)
+3 - [linktr.ee](https://linktr.ee/daniloacardoso)
+4 - [Herokuapp](https://rental-wife.herokuapp.com/)
+5 - [Vercel](https://rental-wife-blue.vercel.app/)
+6 - [Figma](https://www.figma.com/file/joCi1q3T60dxbVvd5c7oSn/Untitled?node-id=0%3A1)
+
+Complexidade:
+8/10
 
 ## Documentação de cores
 
